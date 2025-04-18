@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title or article.title or "KKMBEM UNY" }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/styles.css" rel="stylesheet" />
+  </head>
+  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
+    <!-- Header -->
+    <header class="p-4 shadow-md bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+      <div class="container mx-auto">
+        <a href="/" class="text-2xl font-bold">KKMBEM UNY</a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="min-h-screen py-8">
+      {{ content | safe }}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-800 p-4 text-center mt-12">
+      <p>© {{ now | date("yyyy") }} KKMBEM UNY</p>
+    </footer>
+  </body>
+</html>
