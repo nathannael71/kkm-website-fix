@@ -2,27 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Netlify CMS</title>
-    <script src="https://unpkg.com/netlify-cms@latest/dist/netlify-cms.js"></script>
+    <title>CMS</title>
   </head>
   <body>
+    <script src="https://cdn.jsdelivr.net/npm/netlify-cms@2.10.192/dist/netlify-cms.min.js" onload="startCMS()"></script>
     <script>
-      window.CMS_MANUAL_INIT = true;
-      window.addEventListener('DOMContentLoaded', () => {
-        const configURL = '/admin/config.yml';
-        fetch(configURL)
-          .then(res => {
-            if (!res.ok) throw new Error('Gagal load config.yml');
-            return res.text();
+      function startCMS() {
+        fetch('/admin/config.yml')
+          .then(response => response.text())
+          .then(config => {
+            window.CMS.init({ config });
           })
-          .then(configText => {
-            CMS.init({ config: configText });
-          })
-          .catch(err => {
-            document.body.innerHTML = '<h2>Gagal muat CMS: ' + err.message + '</h2>';
-            console.error(err);
+          .catch(error => {
+            document.body.innerHTML = '<pre style="color:red;">Gagal load config.yml:\n' + error.message + '</pre>';
+            console.error('CMS error:', error);
           });
-      });
+      }
     </script>
   </body>
 </html>
