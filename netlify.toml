@@ -15,3 +15,12 @@
 
 [build.environment]
   NODE_VERSION = "16"
+  
+[build]
+  publish = "_site"
+  command = "eleventy"
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/:splat"
+  status = 200
