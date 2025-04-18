@@ -1,54 +1,304 @@
 backend:
   name: git-gateway
-  branch: main # Pastikan ini branch utama Anda
-  commit_messages:
-    create: 'Create {{collection}} "{{slug}}"'
-    update: 'Update {{collection}} "{{slug}}"'
-    delete: 'Delete {{collection}} "{{slug}}"'
-    uploadMedia: 'Upload "{{path}}"'
-    deleteMedia: 'Delete "{{path}}"'
+  branch: main # Ganti dengan nama branch utama Anda
 
-# Pengaturan media
-media_folder: "images/uploads" # Folder untuk media yang diupload
-public_folder: "/images/uploads" # Path yang digunakan di website
+# Media folder berisi gambar yang diupload
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
-# Aktifkan editorial workflow jika dibutuhkan
-# publish_mode: editorial_workflow
-
-# Pengaturan untuk local backend (untuk testing)
+# Pengaturan untuk preview lokal (opsional)
 local_backend: true
 
 collections:
-  # Pastikan semua koleksi menuju ke folder _data
+  # Pengaturan Umum Website
   - name: "settings"
-    label: "Settings"
+    label: "Pengaturan Website"
     files:
       - name: "general"
-        label: "Site Settings"
+        label: "Pengaturan Umum"
         file: "_data/settings.json"
         fields:
-          - {label: "Site Title", name: "title", widget: "string"}
-          - {label: "Description", name: "description", widget: "text"}
-          - {label: "Keywords", name: "keywords", widget: "string"}
-          
+          - {label: "Judul Website", name: "title", widget: "string"}
+          - {label: "Deskripsi", name: "description", widget: "text"}
+          - {label: "Kata Kunci SEO", name: "keywords", widget: "string"}
+          - label: "Logo"
+            name: "logo"
+            widget: "object"
+            fields:
+              - {label: "Logo UNY", name: "uny", widget: "image", required: false}
+              - {label: "Logo BEM", name: "bem", widget: "image", required: false}
+
+  # Pengaturan UI
+  - name: "ui"
+    label: "Tampilan UI"
+    file: "_data/ui.json"
+    fields:
+      - label: "Warna"
+        name: "colors"
+        widget: "object"
+        fields:
+          - {label: "Warna Utama", name: "primary", widget: "string", default: "#0071e3"}
+          - {label: "Warna Sekunder", name: "secondary", widget: "string", default: "#86868b"}
+          - {label: "Warna Aksen", name: "accent", widget: "string", default: "#F4A83A"}
+      - label: "Tipografi"
+        name: "typography"
+        widget: "object"
+        fields:
+          - {label: "Font Heading", name: "headingFont", widget: "string"}
+          - {label: "Font Body", name: "bodyFont", widget: "string"}
+          - {label: "Ukuran Font Dasar", name: "baseFontSize", widget: "string", default: "16px"}
+
+  # Hero Section
   - name: "hero"
-    label: "Hero Section"
+    label: "Section Hero"
     file: "_data/hero.json"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Subtitle", name: "subtitle", widget: "text"}
-      - label: "Button"
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Subjudul", name: "subtitle", widget: "text"}
+      - label: "Tombol"
         name: "button"
         widget: "object"
         fields:
-          - {label: "Text", name: "text", widget: "string"}
+          - {label: "Teks", name: "text", widget: "string"}
           - {label: "Link", name: "link", widget: "string"}
-      - label: "Slides"
+      - label: "Gambar Slide"
         name: "slides"
         widget: "list"
         fields:
-          - {label: "Image", name: "image", widget: "image"}
-          - {label: "Alt Text", name: "alt", widget: "string"}
+          - {label: "Gambar", name: "image", widget: "image"}
+          - {label: "Teks Alternatif", name: "alt", widget: "string"}
 
-  # Tambahkan semua koleksi lain yang dibutuhkan
-  # ...
+  # About Section
+  - name: "about"
+    label: "Section About"
+    file: "_data/about.json"
+    fields:
+      - {label: "Judul Kecil", name: "smallTitle", widget: "string"}
+      - {label: "Judul Utama", name: "title", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - label: "Fitur-fitur"
+        name: "features"
+        widget: "list"
+        fields:
+          - {label: "Judul", name: "title", widget: "string"}
+          - {label: "Deskripsi", name: "description", widget: "text"}
+          - {label: "Ikon", name: "icon", widget: "string", default: "fa-star"}
+          - {label: "Warna Latar", name: "bgColor", widget: "string", default: "blue-500"}
+
+  # Programs Section
+  - name: "programs-settings"
+    label: "Pengaturan Program"
+    file: "_data/programs-settings.json"
+    fields:
+      - {label: "Judul Kecil", name: "smallTitle", widget: "string"}
+      - {label: "Judul Utama", name: "title", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+
+  - name: "programs"
+    label: "Daftar Program"
+    folder: "_data/programs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - {label: "Gambar", name: "image", widget: "image"}
+      - {label: "Status", name: "status", widget: "string", default: "Coming Soon"}
+
+  # Team Section
+  - name: "team-settings"
+    label: "Pengaturan Tim"
+    file: "_data/team-settings.json"
+    fields:
+      - {label: "Judul Kecil", name: "smallTitle", widget: "string"}
+      - {label: "Judul Utama", name: "title", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - {label: "Teks Tombol", name: "buttonText", widget: "string", default: "Get in Touch"}
+
+  - name: "team"
+    label: "Anggota Tim"
+    folder: "_data/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Nama", name: "name", widget: "string"}
+      - {label: "Posisi", name: "position", widget: "string"}
+      - {label: "Foto", name: "photo", widget: "image"}
+      - {label: "Instagram", name: "instagram", widget: "string", required: false}
+      - {label: "Email", name: "email", widget: "string", required: false}
+      - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+
+  # Articles Section
+  - name: "articles-settings"
+    label: "Pengaturan Artikel"
+    file: "_data/articles-settings.json"
+    fields:
+      - {label: "Judul Kecil", name: "smallTitle", widget: "string"}
+      - {label: "Judul Utama", name: "title", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - {label: "Teks Tombol Lihat Semua", name: "viewAllButton", widget: "string"}
+      - {label: "URL Lihat Semua", name: "viewAllUrl", widget: "string"}
+
+  - name: "articles"
+    label: "Daftar Artikel"
+    folder: "_data/articles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Cuplikan", name: "excerpt", widget: "text"}
+      - {label: "Gambar", name: "image", widget: "image"}
+      - {label: "Penulis", name: "author", widget: "string"}
+      - {label: "Foto Penulis", name: "authorPhoto", widget: "image"}
+      - {label: "Tanggal", name: "date", widget: "string"}
+      - {label: "URL", name: "url", widget: "string"}
+
+  # Timeline Section
+  - name: "timeline-settings"
+    label: "Pengaturan Timeline"
+    file: "_data/timeline-settings.json"
+    fields:
+      - {label: "Judul Kecil", name: "smallTitle", widget: "string"}
+      - {label: "Judul Utama", name: "title", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+
+  - name: "timeline"
+    label: "Item Timeline"
+    folder: "_data/timeline"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Tanggal", name: "date", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - {label: "Teks Tombol", name: "buttonText", widget: "string", default: "Coming Soon"}
+
+  # Gallery Section
+  - name: "gallery-settings"
+    label: "Pengaturan Galeri"
+    file: "_data/gallery-settings.json"
+    fields:
+      - {label: "Judul Kecil", name: "smallTitle", widget: "string"}
+      - {label: "Judul Utama", name: "title", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - {label: "Teks Tombol Lihat Semua", name: "viewAllButton", widget: "string"}
+      - {label: "URL Lihat Semua", name: "viewAllUrl", widget: "string"}
+
+  - name: "gallery"
+    label: "Item Galeri"
+    folder: "_data/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Tanggal", name: "date", widget: "string"}
+      - {label: "Gambar", name: "image", widget: "image"}
+
+  # Contact Section
+  - name: "contact"
+    label: "Section Kontak"
+    file: "_data/contact.json"
+    fields:
+      - {label: "Judul Kecil", name: "smallTitle", widget: "string"}
+      - {label: "Judul Utama", name: "title", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - label: "Info Kontak"
+        name: "contactInfo"
+        widget: "object"
+        fields:
+          - {label: "Judul Panel", name: "title", widget: "string"}
+          - label: "Instagram"
+            name: "instagram"
+            widget: "object"
+            fields:
+              - {label: "Judul", name: "title", widget: "string"}
+              - {label: "Deskripsi", name: "description", widget: "string"}
+              - {label: "Username", name: "username", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+          - label: "Email"
+            name: "email"
+            widget: "object"
+            fields:
+              - {label: "Judul", name: "title", widget: "string"}
+              - {label: "Deskripsi", name: "description", widget: "string"}
+              - {label: "Alamat Email", name: "address", widget: "string"}
+          - label: "Lokasi"
+            name: "location"
+            widget: "object"
+            fields:
+              - {label: "Judul", name: "title", widget: "string"}
+              - {label: "Deskripsi", name: "description", widget: "string"}
+              - {label: "Alamat", name: "address", widget: "string"}
+      - label: "Form Kontak"
+        name: "contactForm"
+        widget: "object"
+        fields:
+          - {label: "Judul Panel", name: "title", widget: "string"}
+          - {label: "ID Formspree", name: "formspreeId", widget: "string"}
+          - {label: "Teks Tombol", name: "buttonText", widget: "string"}
+          - {label: "Pesan Sukses", name: "successMessage", widget: "string"}
+
+  # Location Section
+  - name: "location"
+    label: "Section Lokasi"
+    file: "_data/location.json"
+    fields:
+      - {label: "Judul Kecil", name: "smallTitle", widget: "string"}
+      - {label: "Judul Utama", name: "title", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - {label: "URL Map", name: "mapUrl", widget: "string"}
+      - label: "Info Lokasi"
+        name: "locationInfo"
+        widget: "object"
+        fields:
+          - {label: "Nama Tempat", name: "placeName", widget: "string"}
+          - {label: "Alamat", name: "address", widget: "string"}
+          - {label: "URL Petunjuk Arah", name: "directionsUrl", widget: "string"}
+      - label: "CTA"
+        name: "cta"
+        widget: "object"
+        fields:
+          - {label: "Judul", name: "title", widget: "string"}
+          - {label: "Deskripsi", name: "description", widget: "text"}
+          - {label: "Teks Tombol", name: "buttonText", widget: "string"}
+          - {label: "URL Tombol", name: "buttonUrl", widget: "string"}
+
+  # Footer
+  - name: "footer"
+    label: "Footer"
+    file: "_data/footer.json"
+    fields:
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - label: "Quick Links"
+        name: "quickLinks"
+        widget: "list"
+        fields:
+          - {label: "Label", name: "label", widget: "string"}
+          - {label: "URL", name: "url", widget: "string"}
+      - label: "Info Kontak"
+        name: "contactInfo"
+        widget: "list"
+        fields:
+          - {label: "Ikon", name: "icon", widget: "string"}
+          - {label: "Konten", name: "content", widget: "string"}
+          - {label: "URL", name: "url", widget: "string", required: false}
+      - {label: "Copyright", name: "copyright", widget: "string"}
+      - label: "Link Legal"
+        name: "legalLinks"
+        widget: "list"
+        fields:
+          - {label: "Label", name: "label", widget: "string"}
+          - {label: "URL", name: "url", widget: "string"}
+
+  # Navigation
+  - name: "navigation"
+    label: "Navigasi"
+    file: "_data/navigation.json"
+    fields:
+      - label: "Menu"
+        name: "menu"
+        widget: "list"
+        fields:
+          - {label: "Label", name: "label", widget: "string"}
+          - {label: "URL", name: "url", widget: "string"}
+          - {label: "Ikon", name: "icon", widget: "string"}
