@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
     <title>{{ title }}</title>
   </head>
   <body>
     <h1>{{ title }}</h1>
-    <small>{{ date | date: "%d %B %Y" }}</small>
+    <p><small>{{ date | date('dd MMM yyyy') }}</small></p>
     <div>{{ content | safe }}</div>
   </body>
 </html>
