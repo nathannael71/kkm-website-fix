@@ -1,8 +1,17 @@
 [build]
-  publish = "_site"
-  command = "npx @11ty/eleventy"
+  publish = "/"
+  command = "echo 'No build command needed'"
 
 [[redirects]]
-  from = "/admin"
-  to = "/admin/index.html"
+  from = "/*"
+  to = "/index.html"
   status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+
+[build.environment]
+  NODE_VERSION = "16"
