@@ -7,6 +7,11 @@ public_folder: "/images/uploads"
 
 publish_mode: editorial_workflow
 
+commit_messages:
+    create: "Create {{collection}} '{{slug}}'"
+    update: "Update {{collection}} '{{slug}}'"
+    delete: "Delete {{collection}} '{{slug}}'"
+
 collections:
   - label: "Tentang Kami"
     name: "about"
