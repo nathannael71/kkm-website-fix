@@ -1,1 +1,13 @@
-[]
+{
+  "items": [
+    {
+      "name": "John Doe",
+      "position": "Ketua BEM",
+      "photo": "/images/uploads/team1.jpg",
+      "instagram": "@johndoe",
+      "email": "john@bemuny.ac.id",
+      "linkedin": "linkedin.com/in/johndoe",
+      "order": 1
+    }
+  ]
+}
