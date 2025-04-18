@@ -1,17 +1,20 @@
-module.exports = function (eleventyConfig) {
-  // Supaya folder admin ikut dibuild
+module.exports = function(eleventyConfig) {
+  // Salin file yang tidak perlu diproses Eleventy
   eleventyConfig.addPassthroughCopy("admin");
+  eleventyConfig.addPassthroughCopy("images");
+  eleventyConfig.addPassthroughCopy("_data");
 
-  // Kumpulkan semua file di src/posts jadi koleksi "posts"
-  eleventyConfig.addCollection("posts", function (collectionApi) {
-    return collectionApi.getFilteredByGlob("src/posts/*.md");
-  });
+  // Tambahkan jika Anda memiliki file JS atau CSS yang tidak diprocess
+  // eleventyConfig.addPassthroughCopy("css");
+  // eleventyConfig.addPassthroughCopy("js");
 
   return {
+    passthroughFileCopy: true,
     dir: {
-      input: "src",
+      input: ".",
+      output: "_site",
       includes: "_includes",
-      output: "_site"
+      data: "_data"
     }
   };
 };
