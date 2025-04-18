@@ -10,155 +10,194 @@ publish_mode: editorial_workflow
 collections:
   - label: "Tentang Kami"
     name: "about"
-    file: "_data/about.json"
-    fields:
-      - {label: "Judul", name: "title", widget: "string"}
-      - {label: "Deskripsi", name: "description", widget: "text"}
+    files:
+      - file: "_data/about.json"
+        label: "Tentang Kami"
+        name: "about"
+        fields:
+          - {label: "Judul", name: "title", widget: "string"}
+          - {label: "Deskripsi", name: "description", widget: "text"}
 
   - label: "Artikel"
     name: "articles"
-    file: "_data/articles.json"
-    fields:
-      - label: "Daftar Artikel"
-        name: "items"
-        widget: "list"
+    files:
+      - file: "_data/articles.json"
+        label: "Artikel"
+        name: "articles"
         fields:
-          - {label: "Judul", name: "title", widget: "string"}
-          - {label: "Ringkasan", name: "excerpt", widget: "text"}
-          - {label: "Penulis", name: "author", widget: "string"}
-          - {label: "Foto Penulis", name: "authorPhoto", widget: "image"}
-          - {label: "Tanggal", name: "date", widget: "datetime"}
-          - {label: "Gambar", name: "image", widget: "image"}
-          - {label: "Isi", name: "content", widget: "markdown"}
-          - {label: "Slug", name: "slug", widget: "string"}
+          - label: "Daftar Artikel"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Judul", name: "title", widget: "string"}
+              - {label: "Ringkasan", name: "excerpt", widget: "text"}
+              - {label: "Penulis", name: "author", widget: "string"}
+              - {label: "Foto Penulis", name: "authorPhoto", widget: "image"}
+              - {label: "Tanggal", name: "date", widget: "datetime"}
+              - {label: "Gambar", name: "image", widget: "image"}
+              - {label: "Isi", name: "content", widget: "markdown"}
+              - {label: "Slug", name: "slug", widget: "string"}
 
   - label: "Galeri"
     name: "gallery"
-    file: "_data/gallery.json"
-    fields:
-      - label: "Daftar Galeri"
-        name: "items"
-        widget: "list"
+    files:
+      - file: "_data/gallery.json"
+        label: "Galeri"
+        name: "gallery"
         fields:
-          - {label: "Judul", name: "title", widget: "string"}
-          - {label: "Tanggal", name: "date", widget: "string"}
-          - {label: "Gambar", name: "image", widget: "image"}
+          - label: "Daftar Galeri"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Judul", name: "title", widget: "string"}
+              - {label: "Tanggal", name: "date", widget: "string"}
+              - {label: "Gambar", name: "image", widget: "image"}
 
   - label: "Program"
     name: "programs"
-    file: "_data/programs.json"
-    fields:
-      - label: "Daftar Program"
-        name: "items"
-        widget: "list"
+    files:
+      - file: "_data/programs.json"
+        label: "Program"
+        name: "programs"
         fields:
-          - {label: "Judul", name: "title", widget: "string"}
-          - {label: "Deskripsi", name: "description", widget: "text"}
-          - {label: "Gambar", name: "image", widget: "image"}
-          - {label: "Status", name: "status", widget: "string"}
-          - {label: "Urutan", name: "order", widget: "number"}
+          - label: "Daftar Program"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Judul", name: "title", widget: "string"}
+              - {label: "Deskripsi", name: "description", widget: "text"}
+              - {label: "Gambar", name: "image", widget: "image"}
+              - {label: "Status", name: "status", widget: "string"}
+              - {label: "Urutan", name: "order", widget: "number"}
 
   - label: "Tim"
     name: "team"
-    file: "_data/team.json"
-    fields:
-      - label: "Daftar Tim"
-        name: "items"
-        widget: "list"
+    files:
+      - file: "_data/team.json"
+        label: "Tim"
+        name: "team"
         fields:
-          - {label: "Nama", name: "name", widget: "string"}
-          - {label: "Posisi", name: "position", widget: "string"}
-          - {label: "Foto", name: "photo", widget: "image"}
-          - {label: "Instagram", name: "instagram", widget: "string", required: false}
-          - {label: "Email", name: "email", widget: "string", required: false}
-          - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
-          - {label: "Urutan", name: "order", widget: "number", default: 0}
+          - label: "Daftar Tim"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Nama", name: "name", widget: "string"}
+              - {label: "Posisi", name: "position", widget: "string"}
+              - {label: "Foto", name: "photo", widget: "image"}
+              - {label: "Instagram", name: "instagram", widget: "string", required: false}
+              - {label: "Email", name: "email", widget: "string", required: false}
+              - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+              - {label: "Urutan", name: "order", widget: "number", default: 0}
 
   - label: "Timeline"
     name: "timeline"
-    file: "_data/timeline.json"
-    fields:
-      - label: "Daftar Timeline"
-        name: "items"
-        widget: "list"
+    files:
+      - file: "_data/timeline.json"
+        label: "Timeline"
+        name: "timeline"
         fields:
-          - {label: "Judul", name: "title", widget: "string"}
-          - {label: "Tanggal", name: "date", widget: "string"}
-          - {label: "Deskripsi", name: "description", widget: "text"}
-          - {label: "Teks Tombol", name: "buttonText", widget: "string"}
-          - {label: "Status", name: "status", widget: "string"}
-          - {label: "Urutan", name: "order", widget: "number"}
+          - label: "Daftar Timeline"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Judul", name: "title", widget: "string"}
+              - {label: "Tanggal", name: "date", widget: "string"}
+              - {label: "Deskripsi", name: "description", widget: "text"}
+              - {label: "Teks Tombol", name: "buttonText", widget: "string"}
+              - {label: "Status", name: "status", widget: "string"}
+              - {label: "Urutan", name: "order", widget: "number"}
 
   - label: "Hero"
     name: "hero"
-    file: "_data/hero.json"
-    fields:
-      - {label: "Judul", name: "title", widget: "string"}
-      - {label: "Subjudul", name: "subtitle", widget: "string"}
-      - {label: "Teks Tombol", name: "buttonText", widget: "string"}
-      - {label: "Gambar", name: "image", widget: "image"}
+    files:
+      - file: "_data/hero.json"
+        label: "Hero"
+        name: "hero"
+        fields:
+          - {label: "Judul", name: "title", widget: "string"}
+          - {label: "Subjudul", name: "subtitle", widget: "string"}
+          - {label: "Teks Tombol", name: "buttonText", widget: "string"}
+          - {label: "Gambar", name: "image", widget: "image"}
 
   - label: "Lokasi"
     name: "location"
-    file: "_data/location.json"
-    fields:
-      - {label: "Alamat", name: "address", widget: "text"}
-      - {label: "Peta Embed", name: "mapEmbed", widget: "text"}
+    files:
+      - file: "_data/location.json"
+        label: "Lokasi"
+        name: "location"
+        fields:
+          - {label: "Alamat", name: "address", widget: "text"}
+          - {label: "Peta Embed", name: "mapEmbed", widget: "text"}
 
   - label: "Kontak"
     name: "contact"
-    file: "_data/contact.json"
-    fields:
-      - {label: "Email", name: "email", widget: "string"}
-      - {label: "Telepon", name: "phone", widget: "string"}
-      - {label: "Alamat", name: "address", widget: "text"}
+    files:
+      - file: "_data/contact.json"
+        label: "Kontak"
+        name: "contact"
+        fields:
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Telepon", name: "phone", widget: "string"}
+          - {label: "Alamat", name: "address", widget: "text"}
 
   - label: "Footer"
     name: "footer"
-    file: "_data/footer.json"
-    fields:
-      - {label: "UNY Logo", name: "unyLogo", widget: "image", required: false}
-      - {label: "BEM Logo", name: "bemLogo", widget: "image", required: false}
-      - {label: "Deskripsi", name: "description", widget: "text", required: false}
-      - label: "Sosial Media"
-        name: "socialLinks"
-        widget: "list"
+    files:
+      - file: "_data/footer.json"
+        label: "Footer"
+        name: "footer"
         fields:
-          - {label: "Platform", name: "platform", widget: "select", options: ["instagram", "twitter", "linkedin", "youtube", "facebook", "tiktok", "other"]}
-          - {label: "URL", name: "url", widget: "string"}
-          - {label: "Custom Icon (FontAwesome)", name: "customIcon", widget: "string", required: false}
+          - {label: "UNY Logo", name: "unyLogo", widget: "image", required: false}
+          - {label: "BEM Logo", name: "bemLogo", widget: "image", required: false}
+          - {label: "Deskripsi", name: "description", widget: "text", required: false}
+          - label: "Sosial Media"
+            name: "socialLinks"
+            widget: "list"
+            fields:
+              - {label: "Platform", name: "platform", widget: "select", options: ["instagram", "twitter", "linkedin", "youtube", "facebook", "tiktok", "other"]}
+              - {label: "URL", name: "url", widget: "string"}
+              - {label: "Custom Icon (FontAwesome)", name: "customIcon", widget: "string", required: false}
 
   - label: "Navigasi"
     name: "navigation"
-    file: "_data/navigation.json"
-    fields:
-      - label: "Menu"
-        name: "items"
-        widget: "list"
+    files:
+      - file: "_data/navigation.json"
+        label: "Navigasi"
+        name: "navigation"
         fields:
-          - {label: "Teks", name: "label", widget: "string"}
-          - {label: "Link", name: "url", widget: "string"}
+          - label: "Menu"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Teks", name: "label", widget: "string"}
+              - {label: "Link", name: "url", widget: "string"}
 
   - label: "Pengaturan"
     name: "settings"
-    file: "_data/settings.json"
-    fields:
-      - {label: "Judul Website", name: "title", widget: "string"}
-      - {label: "Deskripsi Website", name: "description", widget: "text"}
-      - label: "Warna"
-        name: "colors"
-        widget: "object"
+    files:
+      - file: "_data/settings.json"
+        label: "Pengaturan"
+        name: "settings"
         fields:
-          - {label: "Warna Utama", name: "primary", widget: "string"}
-          - {label: "Warna Sekunder", name: "secondary", widget: "string"}
+          - {label: "Judul Website", name: "title", widget: "string"}
+          - {label: "Deskripsi Website", name: "description", widget: "text"}
+          - label: "Warna"
+            name: "colors"
+            widget: "object"
+            fields:
+              - {label: "Warna Utama", name: "primary", widget: "string"}
+              - {label: "Warna Sekunder", name: "secondary", widget: "string"}
 
   - label: "UI"
     name: "ui"
-    file: "_data/ui.json"
-    fields:
-      - label: "Pengaturan UI"
-        name: "components"
-        widget: "list"
+    files:
+      - file: "_data/ui.json"
+        label: "UI"
+        name: "ui"
         fields:
-          - {label: "Komponen", name: "name", widget: "string"}
-          - {label: "Aktif", name: "enabled", widget: "boolean", default: true}
+          - label: "Pengaturan UI"
+            name: "components"
+            widget: "list"
+            fields:
+              - {label: "Komponen", name: "name", widget: "string"}
+              - {label: "Aktif", name: "enabled", widget: "boolean", default: true}
