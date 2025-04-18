@@ -10,13 +10,10 @@ publish_mode: editorial_workflow
 collections:
   - label: "Tentang Kami"
     name: "about"
-    files:
-      - label: "Tentang"
-        name: "about"
-        file: "_data/about.json"
-        fields:
-          - {label: "Judul", name: "title", widget: "string"}
-          - {label: "Deskripsi", name: "description", widget: "text"}
+    file: "_data/about.json"
+    fields:
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
 
   - label: "Artikel"
     name: "articles"
