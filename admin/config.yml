@@ -1,79 +1,119 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main # Sesuaikan dengan branch default Anda
 
-# Gambar yang diunggah akan disimpan di folder ini
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "images/uploads" # Folder tempat media akan disimpan
+public_folder: "/images/uploads" # URL path ke media
 
+# Pengaturan untuk Publish Mode
+publish_mode: editorial_workflow
+
+# Koleksi konten yang dapat dikelola via CMS
 collections:
+  # Tim
   - name: "team"
-    label: "Anggota Tim"
+    label: "Tim"
     folder: "_data/team"
     create: true
     slug: "{{slug}}"
+    format: "json"
+    extension: "json"
     fields:
       - {label: "Nama", name: "name", widget: "string"}
-      - {label: "Jabatan", name: "position", widget: "string"}
+      - {label: "Posisi", name: "position", widget: "string"}
       - {label: "Foto", name: "photo", widget: "image"}
       - {label: "Instagram", name: "instagram", widget: "string", required: false}
       - {label: "Email", name: "email", widget: "string", required: false}
       - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
-      
+    editor:
+      preview: false
+
+  # Program
   - name: "programs"
     label: "Program"
     folder: "_data/programs"
     create: true
     slug: "{{slug}}"
+    format: "json"
+    extension: "json"
     fields:
       - {label: "Judul", name: "title", widget: "string"}
       - {label: "Deskripsi", name: "description", widget: "text"}
       - {label: "Gambar", name: "image", widget: "image"}
-      - {label: "Status", name: "status", widget: "select", options: ["Coming Soon", "Aktif", "Selesai"]}
+      - {label: "Status", name: "status", widget: "string", default: "Coming Soon"}
+    editor:
+      preview: false
 
+  # Artikel
   - name: "articles"
     label: "Artikel"
     folder: "_data/articles"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
+    format: "json"
+    extension: "json"
     fields:
       - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Ringkasan", name: "excerpt", widget: "text"}
       - {label: "Penulis", name: "author", widget: "string"}
-      - {label: "Foto Penulis", name: "author_photo", widget: "image"}
-      - {label: "Tanggal Publikasi", name: "date", widget: "datetime"}
-      - {label: "Gambar Unggulan", name: "image", widget: "image"}
-      - {label: "Ringkasan", name: "summary", widget: "text"}
-      - {label: "Isi", name: "body", widget: "markdown"}
+      - {label: "Foto Penulis", name: "authorPhoto", widget: "image"}
+      - {label: "Tanggal", name: "date", widget: "string"}
+      - {label: "Gambar", name: "image", widget: "image"}
+      - {label: "URL", name: "url", widget: "string", required: false}
+    editor:
+      preview: false
 
+  # Timeline
+  - name: "timeline"
+    label: "Timeline"
+    folder: "_data/timeline"
+    create: true
+    slug: "{{slug}}"
+    format: "json"
+    extension: "json"
+    fields:
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Tanggal", name: "date", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - {label: "Teks Tombol", name: "buttonText", widget: "string", default: "Coming Soon"}
+    editor:
+      preview: false
+
+  # Gallery
   - name: "gallery"
     label: "Galeri"
     folder: "_data/gallery"
     create: true
     slug: "{{slug}}"
+    format: "json"
+    extension: "json"
     fields:
       - {label: "Judul", name: "title", widget: "string"}
-      - {label: "Tanggal", name: "date", widget: "datetime"}
+      - {label: "Tanggal", name: "date", widget: "string"}
       - {label: "Gambar", name: "image", widget: "image"}
+    editor:
+      preview: false
 
-  - name: "timeline"
-    label: "Timeline Acara"
-    folder: "_data/timeline"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Judul", name: "title", widget: "string"}
-      - {label: "Tanggal", name: "date", widget: "datetime"}
-      - {label: "Deskripsi", name: "description", widget: "text"}
-      - {label: "Status", name: "status", widget: "select", options: ["Coming Soon", "Aktif", "Selesai"]}
-      
+  # Pengaturan Umum
   - name: "settings"
-    label: "Pengaturan Situs"
+    label: "Pengaturan"
     files:
-      - label: "Informasi Kontak"
-        name: "contact"
-        file: "_data/contact.yml"
+      - label: "Pengaturan Umum"
+        name: "general"
+        file: "_data/settings.json"
         fields:
-          - {label: "Email", name: "email", widget: "string"}
-          - {label: "Instagram", name: "instagram", widget: "string"}
-          - {label: "Alamat Kantor", name: "address", widget: "text"}
-          - {label: "URL Embed Google Maps", name: "map_url", widget: "string"}
+          - {label: "Judul Website", name: "title", widget: "string"}
+          - {label: "Deskripsi Website", name: "description", widget: "text"}
+          - label: "Warna"
+            name: "colors"
+            widget: "object"
+            fields:
+              - {label: "Warna Utama", name: "primary", widget: "string", default: "#0071e3"}
+              - {label: "Warna Sekunder", name: "secondary", widget: "string", default: "#86868b"}
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Judul", name: "title", widget: "string"}
+              - {label: "Subjudul", name: "subtitle", widget: "string"}
+              - {label: "Teks Tombol", name: "buttonText", widget: "string"}
