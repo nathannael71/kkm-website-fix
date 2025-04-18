@@ -1,12 +1,17 @@
 [build]
-  publish = "_site"
-  command = "npm run build"
-
-[build.environment]
-  NODE_VERSION = "16"
+  publish = "/"
+  command = "echo 'No build command needed'"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+
+[build.environment]
+  NODE_VERSION = "16"
