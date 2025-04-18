@@ -1,389 +1,54 @@
 backend:
   name: git-gateway
-  branch: main # Sesuaikan dengan branch default Anda
+  branch: main # Pastikan ini branch utama Anda
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload "{{path}}"'
+    deleteMedia: 'Delete "{{path}}"'
 
-media_folder: "images/uploads" # Folder tempat media akan disimpan
-public_folder: "/images/uploads" # URL path ke media
+# Pengaturan media
+media_folder: "images/uploads" # Folder untuk media yang diupload
+public_folder: "/images/uploads" # Path yang digunakan di website
 
-# Pengaturan untuk Publish Mode
-publish_mode: editorial_workflow
+# Aktifkan editorial workflow jika dibutuhkan
+# publish_mode: editorial_workflow
 
-# Koleksi konten yang dapat dikelola via CMS
+# Pengaturan untuk local backend (untuk testing)
+local_backend: true
+
 collections:
-  # Pengaturan Umum & Brand
+  # Pastikan semua koleksi menuju ke folder _data
   - name: "settings"
-    label: "Pengaturan Website"
+    label: "Settings"
     files:
-      - label: "Informasi Umum"
-        name: "general"
+      - name: "general"
+        label: "Site Settings"
         file: "_data/settings.json"
         fields:
-          - {label: "Judul Website", name: "title", widget: "string", default: "Karir dan Karya Mahasiswa | BEM KM UNY"}
-          - {label: "Deskripsi Website", name: "description", widget: "text", default: "Departemen Karir dan Karya Mahasiswa BEM KM Universitas Negeri Yogyakarta - Empowering students through career development and creative outlets"}
-          - {label: "Keywords", name: "keywords", widget: "string", default: "BEM KM UNY, Karir Mahasiswa, Karya Mahasiswa, UNY, Universitas Negeri Yogyakarta"}
-          - label: "Logo"
-            name: "logo"
-            widget: "object"
-            fields:
-              - {label: "Logo UNY", name: "uny", widget: "image", required: false}
-              - {label: "Logo BEM", name: "bem", widget: "image", required: false}
-          - label: "Warna"
-            name: "colors"
-            widget: "object"
-            fields:
-              - {label: "Warna Utama", name: "primary", widget: "color", default: "#0071e3"}
-              - {label: "Warna Sekunder", name: "secondary", widget: "color", default: "#86868b"}
-              - {label: "Warna Aksen", name: "accent", widget: "color", default: "#F4A83A"}
-          - label: "Social Media"
-            name: "social"
-            widget: "object"
-            fields:
-              - {label: "Instagram", name: "instagram", widget: "string", default: "https://instagram.com/kkm.bemuny"}
-              - {label: "Twitter", name: "twitter", widget: "string", required: false}
-              - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
-              - {label: "YouTube", name: "youtube", widget: "string", required: false}
-      
-      - label: "Menu & Navigasi"
-        name: "navigation"
-        file: "_data/navigation.json"
-        fields:
-          - label: "Menu Items"
-            name: "menu"
-            widget: "list"
-            fields:
-              - {label: "Label", name: "label", widget: "string"}
-              - {label: "URL", name: "url", widget: "string"}
-              - {label: "Icon", name: "icon", widget: "string", hint: "Masukkan nama icon dari Font Awesome, contoh: fa-home"}
-  
-  # Hero Section
+          - {label: "Site Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Keywords", name: "keywords", widget: "string"}
+          
   - name: "hero"
     label: "Hero Section"
-    files:
-      - label: "Hero Content"
-        name: "hero"
-        file: "_data/hero.json"
-        fields:
-          - {label: "Judul Utama", name: "title", widget: "string", default: "GROW YOUR SKILL WITH US"}
-          - {label: "Subjudul", name: "subtitle", widget: "string", default: "Empowering students through career development and creative outlets"}
-          - label: "Tombol"
-            name: "button"
-            widget: "object"
-            fields:
-              - {label: "Teks", name: "text", widget: "string", default: "Learn More"}
-              - {label: "Link", name: "link", widget: "string", default: "#about"}
-          - label: "Slider Gambar"
-            name: "slides"
-            widget: "list"
-            fields:
-              - {label: "Gambar", name: "image", widget: "image"}
-              - {label: "Alt Text", name: "alt", widget: "string"}
-  
-  # About Section
-  - name: "about"
-    label: "About Section"
-    files:
-      - label: "About Content"
-        name: "about"
-        file: "_data/about.json"
-        fields:
-          - {label: "Judul Kecil", name: "smallTitle", widget: "string", default: "Tentang Kami"}
-          - {label: "Judul Utama", name: "title", widget: "string", default: "Why We Born?"}
-          - {label: "Deskripsi", name: "description", widget: "text", default: "Kami hadir untuk menjembatani aspirasi dan peluang Anda. Baik itu pengembangan karir, ekspresi kreatif, atau jaringan profesional, misi kami adalah mendukung mahasiswa dalam menemukan passion dan mencapai tujuan mereka."}
-          - label: "Fitur Cards"
-            name: "features"
-            widget: "list"
-            fields:
-              - {label: "Judul", name: "title", widget: "string"}
-              - {label: "Deskripsi", name: "description", widget: "text"}
-              - {label: "Icon", name: "icon", widget: "string", hint: "Masukkan nama icon dari Font Awesome, contoh: fa-graduation-cap"}
-              - {label: "Warna Background", name: "bgColor", widget: "color", default: "#0071e3"}
-  
-  # Program Section
-  - name: "programs"
-    label: "Program"
-    folder: "_data/programs"
-    create: true
-    slug: "{{slug}}"
-    format: "json"
-    extension: "json"
+    file: "_data/hero.json"
     fields:
-      - {label: "Judul", name: "title", widget: "string"}
-      - {label: "Deskripsi", name: "description", widget: "text"}
-      - {label: "Gambar", name: "image", widget: "image"}
-      - {label: "Status", name: "status", widget: "string", default: "Coming Soon"}
-    editor:
-      preview: false
-  
-  # Programs Section Settings
-  - name: "programs-settings"
-    label: "Programs Section"
-    files:
-      - label: "Programs Content"
-        name: "programs-settings"
-        file: "_data/programs-settings.json"
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Subtitle", name: "subtitle", widget: "text"}
+      - label: "Button"
+        name: "button"
+        widget: "object"
         fields:
-          - {label: "Judul Kecil", name: "smallTitle", widget: "string", default: "Program Kami"}
-          - {label: "Judul Utama", name: "title", widget: "string", default: "Our Programs"}
-          - {label: "Deskripsi", name: "description", widget: "text", default: "Kami menawarkan berbagai program yang dirancang untuk meningkatkan keterampilan, menampilkan bakat, dan mempersiapkan perjalanan karir Anda."}
-  
-  # Team Section
-  - name: "team"
-    label: "Tim"
-    folder: "_data/team"
-    create: true
-    slug: "{{slug}}"
-    format: "json"
-    extension: "json"
-    fields:
-      - {label: "Nama", name: "name", widget: "string"}
-      - {label: "Posisi", name: "position", widget: "string"}
-      - {label: "Foto", name: "photo", widget: "image"}
-      - {label: "Instagram", name: "instagram", widget: "string", required: false}
-      - {label: "Email", name: "email", widget: "string", required: false}
-      - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
-    editor:
-      preview: false
-  
-  # Team Section Settings
-  - name: "team-settings"
-    label: "Team Section"
-    files:
-      - label: "Team Content"
-        name: "team-settings"
-        file: "_data/team-settings.json"
+          - {label: "Text", name: "text", widget: "string"}
+          - {label: "Link", name: "link", widget: "string"}
+      - label: "Slides"
+        name: "slides"
+        widget: "list"
         fields:
-          - {label: "Judul Kecil", name: "smallTitle", widget: "string", default: "Tim Kami"}
-          - {label: "Judul Utama", name: "title", widget: "string", default: "Meet With Our Team"}
-          - {label: "Deskripsi", name: "description", widget: "text", default: "Tim mahasiswa kami yang berdedikasi untuk membantu sesama tumbuh dan berkembang dalam meraih cita-cita mereka."}
-          - {label: "Teks Tombol", name: "buttonText", widget: "string", default: "Get in Touch"}
-  
-  # Articles
-  - name: "articles"
-    label: "Artikel"
-    folder: "_data/articles"
-    create: true
-    slug: "{{slug}}"
-    format: "json"
-    extension: "json"
-    fields:
-      - {label: "Judul", name: "title", widget: "string"}
-      - {label: "Ringkasan", name: "excerpt", widget: "text"}
-      - {label: "Penulis", name: "author", widget: "string"}
-      - {label: "Foto Penulis", name: "authorPhoto", widget: "image"}
-      - {label: "Tanggal", name: "date", widget: "string"}
-      - {label: "Gambar", name: "image", widget: "image"}
-      - {label: "URL", name: "url", widget: "string", required: false}
-    editor:
-      preview: false
-  
-  # Articles Section Settings
-  - name: "articles-settings"
-    label: "Articles Section"
-    files:
-      - label: "Articles Content"
-        name: "articles-settings"
-        file: "_data/articles-settings.json"
-        fields:
-          - {label: "Judul Kecil", name: "smallTitle", widget: "string", default: "Artikel Terbaru"}
-          - {label: "Judul Utama", name: "title", widget: "string", default: "Latest Articles"}
-          - {label: "Deskripsi", name: "description", widget: "text", default: "Wawasan, cerita, dan sumber daya untuk membantu Anda dalam perjalanan karir."}
-          - {label: "Tombol View All", name: "viewAllButton", widget: "string", default: "View All Articles"}
-          - {label: "URL Tombol View All", name: "viewAllUrl", widget: "string", default: "/articles"}
-  
-  # Timeline
-  - name: "timeline"
-    label: "Timeline"
-    folder: "_data/timeline"
-    create: true
-    slug: "{{slug}}"
-    format: "json"
-    extension: "json"
-    fields:
-      - {label: "Judul", name: "title", widget: "string"}
-      - {label: "Tanggal", name: "date", widget: "string"}
-      - {label: "Deskripsi", name: "description", widget: "text"}
-      - {label: "Teks Tombol", name: "buttonText", widget: "string", default: "Coming Soon"}
-    editor:
-      preview: false
-  
-  # Timeline Section Settings
-  - name: "timeline-settings"
-    label: "Timeline Section"
-    files:
-      - label: "Timeline Content"
-        name: "timeline-settings"
-        file: "_data/timeline-settings.json"
-        fields:
-          - {label: "Judul Kecil", name: "smallTitle", widget: "string", default: "Timeline Program"}
-          - {label: "Judul Utama", name: "title", widget: "string", default: "Program Timeline"}
-          - {label: "Deskripsi", name: "description", widget: "text", default: "Jadwal kegiatan dan program kami untuk tahun akademik."}
-  
-  # Gallery
-  - name: "gallery"
-    label: "Galeri"
-    folder: "_data/gallery"
-    create: true
-    slug: "{{slug}}"
-    format: "json"
-    extension: "json"
-    fields:
-      - {label: "Judul", name: "title", widget: "string"}
-      - {label: "Tanggal", name: "date", widget: "string"}
-      - {label: "Gambar", name: "image", widget: "image"}
-    editor:
-      preview: false
-  
-  # Gallery Section Settings
-  - name: "gallery-settings"
-    label: "Gallery Section"
-    files:
-      - label: "Gallery Content"
-        name: "gallery-settings"
-        file: "_data/gallery-settings.json"
-        fields:
-          - {label: "Judul Kecil", name: "smallTitle", widget: "string", default: "Galeri Kegiatan"}
-          - {label: "Judul Utama", name: "title", widget: "string", default: "Our Activity Gallery"}
-          - {label: "Deskripsi", name: "description", widget: "text", default: "Dokumentasi kegiatan dan acara kami yang telah membantu mahasiswa tumbuh dan berkembang."}
-          - {label: "Tombol View All", name: "viewAllButton", widget: "string", default: "View Full Gallery"}
-          - {label: "URL Tombol View All", name: "viewAllUrl", widget: "string", default: "/gallery"}
-  
-  # Contact Section
-  - name: "contact"
-    label: "Contact Section"
-    files:
-      - label: "Contact Content"
-        name: "contact"
-        file: "_data/contact.json"
-        fields:
-          - {label: "Judul Kecil", name: "smallTitle", widget: "string", default: "Kontak Kami"}
-          - {label: "Judul Utama", name: "title", widget: "string", default: "Get In Touch"}
-          - {label: "Deskripsi", name: "description", widget: "text", default: "Punya pertanyaan atau ingin berkolaborasi? Hubungi kami segera!"}
-          - label: "Info Kontak"
-            name: "contactInfo"
-            widget: "object"
-            fields:
-              - {label: "Judul Panel", name: "title", widget: "string", default: "Connect With Us"}
-              - label: "Instagram"
-                name: "instagram"
-                widget: "object"
-                fields:
-                  - {label: "Judul", name: "title", widget: "string", default: "Instagram"}
-                  - {label: "Deskripsi", name: "description", widget: "string", default: "Follow us for updates"}
-                  - {label: "Username", name: "username", widget: "string", default: "@kkm.bemuny"}
-                  - {label: "URL", name: "url", widget: "string", default: "https://instagram.com/kkm.bemuny"}
-              - label: "Email"
-                name: "email"
-                widget: "object"
-                fields:
-                  - {label: "Judul", name: "title", widget: "string", default: "Email"}
-                  - {label: "Deskripsi", name: "description", widget: "string", default: "We'd love to hear from you"}
-                  - {label: "Alamat Email", name: "address", widget: "string", default: "kkmbemuny@gmail.com"}
-              - label: "Lokasi"
-                name: "location"
-                widget: "object"
-                fields:
-                  - {label: "Judul", name: "title", widget: "string", default: "Location"}
-                  - {label: "Deskripsi", name: "description", widget: "string", default: "Visit our office"}
-                  - {label: "Alamat", name: "address", widget: "text", default: "Student Center Building, Universitas Negeri Yogyakarta, Karangmalang, Yogyakarta"}
-          - label: "Formulir Kontak"
-            name: "contactForm"
-            widget: "object"
-            fields:
-              - {label: "Judul Panel", name: "title", widget: "string", default: "Send a Message"}
-              - {label: "Teks Tombol", name: "buttonText", widget: "string", default: "Send Message"}
-              - {label: "Formspree ID", name: "formspreeId", widget: "string", default: "mvojrgdp", hint: "ID form Formspree Anda"}
-              - {label: "Pesan Sukses", name: "successMessage", widget: "string", default: "Your message has been sent successfully! We'll get back to you soon."}
-  
-  # Location Section
-  - name: "location"
-    label: "Location Section"
-    files:
-      - label: "Location Content"
-        name: "location"
-        file: "_data/location.json"
-        fields:
-          - {label: "Judul Kecil", name: "smallTitle", widget: "string", default: "Lokasi Kami"}
-          - {label: "Judul Utama", name: "title", widget: "string", default: "Our Location"}
-          - {label: "Deskripsi", name: "description", widget: "text", default: "Kunjungi kami di Student Center Building, Universitas Negeri Yogyakarta."}
-          - {label: "Google Maps Embed URL", name: "mapUrl", widget: "string", default: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.1633170025876!2d110.38421261477832!3d-7.773598894403988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59b2d7b98905%3A0x19ad4f9a195770c7!2sUniversitas%20Negeri%20Yogyakarta!5e0!3m2!1sen!2sid!4v1656483265685!5m2!1sen!2sid"}
-          - label: "Info Lokasi"
-            name: "locationInfo"
-            widget: "object"
-            fields:
-              - {label: "Nama Tempat", name: "placeName", widget: "string", default: "Student Center Building"}
-              - {label: "Alamat", name: "address", widget: "text", default: "Universitas Negeri Yogyakarta, Karangmalang, Yogyakarta"}
-              - {label: "URL Google Maps", name: "directionsUrl", widget: "string", default: "https://www.google.com/maps/dir//Universitas+Negeri+Yogyakarta/"}
-          - label: "CTA"
-            name: "cta"
-            widget: "object"
-            fields:
-              - {label: "Judul", name: "title", widget: "string", default: "For Your Better Future"}
-              - {label: "Deskripsi", name: "description", widget: "text", default: "Join us at Karir dan Karya Mahasiswa to enhance your skills, showcase your talent, and prepare for your future career."}
-              - {label: "Teks Tombol", name: "buttonText", widget: "string", default: "Join Our Community"}
-              - {label: "URL Tombol", name: "buttonUrl", widget: "string", default: "/join"}
-  
-  # Footer
-  - name: "footer"
-    label: "Footer Section"
-    files:
-      - label: "Footer Content"
-        name: "footer"
-        file: "_data/footer.json"
-        fields:
-          - {label: "Deskripsi", name: "description", widget: "text", default: "Dedicated to helping students at Universitas Negeri Yogyakarta develop their skills, showcase their talent, and prepare for their future careers."}
-          - label: "Quick Links"
-            name: "quickLinks"
-            widget: "list"
-            fields:
-              - {label: "Label", name: "label", widget: "string"}
-              - {label: "URL", name: "url", widget: "string"}
-          - label: "Contact Info"
-            name: "contactInfo"
-            widget: "list"
-            fields:
-              - {label: "Type", name: "type", widget: "select", options: ["address", "email", "instagram"], default: "address"}
-              - {label: "Content", name: "content", widget: "string"}
-              - {label: "URL", name: "url", widget: "string", required: false}
-              - {label: "Icon", name: "icon", widget: "string", hint: "Masukkan nama icon dari Font Awesome, contoh: fa-map-marker-alt"}
-          - {label: "Copyright Text", name: "copyright", widget: "string", default: "© 2025 Karir dan Karya Mahasiswa BEM KM UNY. All rights reserved."}
-          - label: "Legal Links"
-            name: "legalLinks"
-            widget: "list"
-            fields:
-              - {label: "Label", name: "label", widget: "string"}
-              - {label: "URL", name: "url", widget: "string"}
-  
-  # UI Settings
-  - name: "ui-settings"
-    label: "UI & Styling"
-    files:
-      - label: "UI Settings"
-        name: "ui"
-        file: "_data/ui.json"
-        fields:
-          - label: "Typography"
-            name: "typography"
-            widget: "object"
-            fields:
-              - {label: "Heading Font", name: "headingFont", widget: "select", options: ["sans-serif", "serif", "monospace"], default: "sans-serif"} 
-              - {label: "Body Font", name: "bodyFont", widget: "select", options: ["sans-serif", "serif", "monospace"], default: "sans-serif"}
-              - {label: "Base Font Size", name: "baseFontSize", widget: "select", options: ["14px", "16px", "18px"], default: "16px"}
-          - label: "Colors"
-            name: "colors"
-            widget: "object"
-            fields:
-              - {label: "Primary", name: "primary", widget: "color", default: "#0071e3"}
-              - {label: "Secondary", name: "secondary", widget: "color", default: "#86868b"}
-              - {label: "Accent", name: "accent", widget: "color", default: "#F4A83A"}
-              - {label: "Light Background", name: "lightBg", widget: "color", default: "#F5F5F7"}
-              - {label: "Dark Background", name: "darkBg", widget: "color", default: "#1D1D1F"}
-              - {label: "Light Text", name: "lightText", widget: "color", default: "#FFFFFF"}
-              - {label: "Dark Text", name: "darkText", widget: "color", default: "#1D1D1F"}
-          - label: "Borders & Shadows"
-            name: "effects"
-            widget: "object"
-            fields:
-              - {label: "Border Radius Base", name: "borderRadius", widget: "select", options: ["0px", "4px", "8px", "12px", "16px", "24px"], default: "12px"}
-              - {label: "Card Border Radius", name: "cardRadius", widget: "select", options: ["0px", "8px", "12px", "16px", "24px", "30px"], default: "24px"}
-              - {label: "Button Border Radius", name: "buttonRadius", widget: "select", options: ["0px", "4px", "8px", "12px", "16px", "30px", "9999px"], default: "9999px"}
-              - {label: "Shadow Intensity", name: "shadowIntensity", widget: "select", options: ["none", "light", "medium", "heavy"], default: "medium"}
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Alt Text", name: "alt", widget: "string"}
+
+  # Tambahkan semua koleksi lain yang dibutuhkan
+  # ...
