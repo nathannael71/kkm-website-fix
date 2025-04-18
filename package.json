@@ -1,10 +1,11 @@
 {
   "scripts": {
-    "build": "node process-cms-data.js && eleventy",
-    "dev": "node process-cms-data.js && eleventy --serve"
+    "process-cms": "node process-cms-data.js",
+    "build": "npm run process-cms && eleventy",
+    "start": "npm run process-cms && eleventy --serve",
+    "debug": "DEBUG=* eleventy"
   },
   "dependencies": {
-    "@11ty/eleventy": "^1.0.1",
-    "glob": "^8.0.3"
+    "@11ty/eleventy": "^1.0.0"
   }
 }
