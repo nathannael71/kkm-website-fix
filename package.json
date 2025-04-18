@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "Website Departemen Karir dan Karya Mahasiswa BEM KM UNY",
   "scripts": {
-    "build": "node process-cms-data.js"
+    "prebuild": "node process-cms-data.js",
+    "build": "npx eleventy",
+    "start": "npx eleventy --serve"
   },
-  "dependencies": {
-    "fs": "0.0.1-security",
-    "path": "^0.12.7"
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
     "@11ty/eleventy": "^2.0.1"
   }
 }
