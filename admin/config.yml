@@ -1,16 +1,13 @@
 backend:
   name: git-gateway
-  branch: main # Sesuaikan dengan branch default Anda
+  branch: main
 
-media_folder: "images/uploads" # Folder tempat media akan disimpan
-public_folder: "/images/uploads" # URL path ke media
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
-# Pengaturan untuk Publish Mode
 publish_mode: editorial_workflow
 
-# Koleksi konten yang dapat dikelola via CMS
 collections:
-  # Tim
   - name: "team"
     label: "Tim"
     folder: "_data/team"
@@ -25,10 +22,8 @@ collections:
       - {label: "Instagram", name: "instagram", widget: "string", required: false}
       - {label: "Email", name: "email", widget: "string", required: false}
       - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
-    editor:
-      preview: false
+      - {label: "Urutan", name: "order", widget: "number", default: 0}
 
-  # Program
   - name: "programs"
     label: "Program"
     folder: "_data/programs"
@@ -41,10 +36,8 @@ collections:
       - {label: "Deskripsi", name: "description", widget: "text"}
       - {label: "Gambar", name: "image", widget: "image"}
       - {label: "Status", name: "status", widget: "string", default: "Coming Soon"}
-    editor:
-      preview: false
+      - {label: "Urutan", name: "order", widget: "number", default: 0}
 
-  # Artikel
   - name: "articles"
     label: "Artikel"
     folder: "_data/articles"
@@ -57,13 +50,12 @@ collections:
       - {label: "Ringkasan", name: "excerpt", widget: "text"}
       - {label: "Penulis", name: "author", widget: "string"}
       - {label: "Foto Penulis", name: "authorPhoto", widget: "image"}
-      - {label: "Tanggal", name: "date", widget: "string"}
-      - {label: "Gambar", name: "image", widget: "image"}
-      - {label: "URL", name: "url", widget: "string", required: false}
-    editor:
-      preview: false
+      - {label: "Tanggal", name: "date", widget: "date", format: "MMMM D, YYYY"}
+      - {label: "Gambar Utama", name: "image", widget: "image"}
+      - {label: "Isi Artikel", name: "content", widget: "markdown"}
+      - {label: "Slug URL", name: "slug", widget: "string"}
+      - {label: "Urutan", name: "order", widget: "number", default: 0}
 
-  # Timeline
   - name: "timeline"
     label: "Timeline"
     folder: "_data/timeline"
@@ -76,10 +68,9 @@ collections:
       - {label: "Tanggal", name: "date", widget: "string"}
       - {label: "Deskripsi", name: "description", widget: "text"}
       - {label: "Teks Tombol", name: "buttonText", widget: "string", default: "Coming Soon"}
-    editor:
-      preview: false
+      - {label: "Status", name: "status", widget: "string", default: "Coming Soon"}
+      - {label: "Urutan", name: "order", widget: "number", default: 0}
 
-  # Gallery
   - name: "gallery"
     label: "Galeri"
     folder: "_data/gallery"
@@ -91,10 +82,20 @@ collections:
       - {label: "Judul", name: "title", widget: "string"}
       - {label: "Tanggal", name: "date", widget: "string"}
       - {label: "Gambar", name: "image", widget: "image"}
-    editor:
-      preview: false
+      - {label: "Urutan", name: "order", widget: "number", default: 0}
 
-  # Pengaturan Umum
+  - name: "heroSlides"
+    label: "Hero Slides"
+    folder: "_data/heroSlides"
+    create: true
+    slug: "slide-{{day}}-{{month}}-{{year}}"
+    format: "json"
+    extension: "json"
+    fields:
+      - {label: "Gambar", name: "image", widget: "image"}
+      - {label: "Alt Text", name: "alt", widget: "string"}
+      - {label: "Urutan", name: "order", widget: "number", default: 0}
+
   - name: "settings"
     label: "Pengaturan"
     files:
@@ -117,141 +118,47 @@ collections:
               - {label: "Judul", name: "title", widget: "string"}
               - {label: "Subjudul", name: "subtitle", widget: "string"}
               - {label: "Teks Tombol", name: "buttonText", widget: "string"}
-collections:
-  # Site Info (Logo, etc.)
+
   - name: "siteInfo"
-    label: "Site Information"
+    label: "Site Info"
     folder: "_data/siteInfo"
     create: false
     slug: "{{slug}}"
+    format: "json"
+    extension: "json"
     fields:
       - {label: "UNY Logo", name: "unyLogo", widget: "image", required: false}
       - {label: "BEM Logo", name: "bemLogo", widget: "image", required: false}
       - {label: "Site Title", name: "title", widget: "string", required: false}
 
-  # Hero Slides
-  - name: "heroSlides"
-    label: "Hero Slides"
-    folder: "_data/heroSlides"
-    create: true
-    slug: "slide-{{day}}-{{month}}-{{year}}"
-    fields:
-      - {label: "Image", name: "image", widget: "image"}
-      - {label: "Alt Text", name: "alt", widget: "string"}
-      - {label: "Order", name: "order", widget: "number", default: 0}
-
-  # Programs
-  - name: "programs"
-    label: "Programs"
-    folder: "_data/programs"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Image", name: "image", widget: "image"}
-      - {label: "Status", name: "status", widget: "string", default: "Coming Soon"}
-      - {label: "Order", name: "order", widget: "number", default: 0}
-
-  # Team
-  - name: "team"
-    label: "Team Members"
-    folder: "_data/team"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Name", name: "name", widget: "string"}
-      - {label: "Position", name: "position", widget: "string"}
-      - {label: "Photo", name: "photo", widget: "image"}
-      - {label: "Instagram Username", name: "instagram", widget: "string", required: false}
-      - {label: "Email", name: "email", widget: "string", required: false}
-      - {label: "LinkedIn Username", name: "linkedin", widget: "string", required: false}
-      - {label: "Order", name: "order", widget: "number", default: 0}
-
-  # Articles
-  - name: "articles"
-    label: "Articles"
-    folder: "_data/articles"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Author", name: "author", widget: "string"}
-      - {label: "Author Photo", name: "authorPhoto", widget: "image"}
-      - {label: "Date", name: "date", widget: "date", format: "MMMM D, YYYY"}
-      - {label: "Featured Image", name: "image", widget: "image"}
-      - {label: "Excerpt", name: "excerpt", widget: "text"}
-      - {label: "Content", name: "content", widget: "markdown"}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Order", name: "order", widget: "number", default: 0}
-
-  # Timeline
-  - name: "timeline"
-    label: "Timeline Events"
-    folder: "_data/timeline"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Status", name: "status", widget: "string", default: "Coming Soon"}
-      - {label: "Order", name: "order", widget: "number", default: 0}
-
-  # Gallery
-  - name: "gallery"
-    label: "Gallery Items"
-    folder: "_data/gallery"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "string"}
-      - {label: "Image", name: "image", widget: "image"}
-      - {label: "Order", name: "order", widget: "number", default: 0}
-
-  # CTA Section
   - name: "cta"
     label: "Call to Action"
     folder: "_data/cta"
     create: false
     slug: "{{slug}}"
+    format: "json"
+    extension: "json"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Button Text", name: "buttonText", widget: "string"}
-      - {label: "Button Link", name: "buttonLink", widget: "string"}
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - {label: "Teks Tombol", name: "buttonText", widget: "string"}
+      - {label: "Link Tombol", name: "buttonLink", widget: "string"}
 
-  # Footer
   - name: "footer"
-    label: "Footer Information"
+    label: "Footer"
     folder: "_data/footer"
     create: false
     slug: "{{slug}}"
+    format: "json"
+    extension: "json"
     fields:
       - {label: "UNY Logo", name: "unyLogo", widget: "image", required: false}
       - {label: "BEM Logo", name: "bemLogo", widget: "image", required: false}
-      - {label: "Description", name: "description", widget: "text", required: false}
-      - label: "Social Links"
+      - {label: "Deskripsi", name: "description", widget: "text", required: false}
+      - label: "Sosial Media"
         name: "socialLinks"
         widget: "list"
         fields:
           - {label: "Platform", name: "platform", widget: "select", options: ["instagram", "twitter", "linkedin", "youtube", "facebook", "tiktok", "other"]}
           - {label: "URL", name: "url", widget: "string"}
-          - {label: "Custom Icon (FontAwesome class)", name: "customIcon", widget: "string", required: false}
-# Articles
-  - name: "articles"
-    label: "Artikel"
-    folder: "_data/articles"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Judul", name: "title", widget: "string"}
-      - {label: "Penulis", name: "author", widget: "string"}
-      - {label: "Foto Penulis", name: "authorPhoto", widget: "image"}
-      - {label: "Tanggal", name: "date", widget: "date", format: "MMMM D, YYYY"}
-      - {label: "Gambar Utama", name: "image", widget: "image"}
-      - {label: "Ringkasan", name: "excerpt", widget: "text"}
-      - {label: "Isi Artikel", name: "content", widget: "markdown"}
-      - {label: "Slug URL", name: "slug", widget: "string"}
-      - {label: "Urutan", name: "order", widget: "number", default: 0}
+          - {label: "Custom Icon (FontAwesome)", name: "customIcon", widget: "string", required: false}
