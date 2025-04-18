@@ -8,6 +8,13 @@
       "email": "john@bemuny.ac.id",
       "linkedin": "linkedin.com/in/johndoe",
       "order": 1
+    },
+    {
+      "order": 1,
+      "name": "Nathan Ganteng",
+      "position": "Bos Besar",
+      "photo": "/images/uploads/img_8960.jpeg",
+      "instagram": "nathanrrl"
     }
   ]
 }
