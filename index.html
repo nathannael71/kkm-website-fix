@@ -1,0 +1,2467 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karir dan Karya Mahasiswa | BEM KM UNY</title>
+    <meta name="description" content="Departemen Karir dan Karya Mahasiswa BEM KM Universitas Negeri Yogyakarta - Empowering students through career development and creative outlets">
+    <meta name="keywords" content="BEM KM UNY, Karir Mahasiswa, Karya Mahasiswa, UNY, Universitas Negeri Yogyakarta">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            blue: '#0071e3',
+                            gray: '#86868b',
+                            darkgray: '#1d1d1f',
+                            lightgray: '#f5f5f7',
+                        }
+                    },
+                    transitionTimingFunction: {
+                        'apple': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+                    },
+                    backdropBlur: {
+                        'apple': '20px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- SwiperJS for carousels -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <!-- Netlify Identity for CMS -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #86868b;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0071e3;
+        }
+        
+        /* Container with proper spacing */
+        .main-container {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 1280px) {
+            .main-container {
+                width: 85%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                width: 90%;
+            }
+        }
+        
+        /* Apple-like text styling */
+        .heading-apple {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        
+        .subheading-apple {
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+        
+        /* Apple-like transitions */
+        .transition-apple {
+            transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        /* Glassmorphism for menu */
+        .glassmorphism {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        
+        /* Image hover zoom effect */
+        .img-zoom {
+            transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .img-zoom:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Parallax effects */
+        .parallax {
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+            will-change: transform;
+        }
+        
+        /* Team member social buttons animation */
+        .team-social-buttons {
+            position: absolute;
+            bottom: 16px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            pointer-events: none;
+        }
+        
+        .team-card.active .team-btn {
+            transform: translateY(-60px);
+            background-color: transparent;
+            color: transparent;
+            box-shadow: none;
+        }
+        
+        .team-card.active .team-social-buttons {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        /* Apple-style gradient backgrounds - Light Mode */
+        .section-gradient-1 {
+            background: linear-gradient(180deg, #F5F5F7 0%, #E8E8ED 100%);
+        }
+        
+        .section-gradient-2 {
+            background: linear-gradient(180deg, #E8F0F9 0%, #D8E4F0 100%);
+        }
+        
+        .section-gradient-3 {
+            background: linear-gradient(180deg, #F0F0F5 0%, #E0E0E8 100%);
+        }
+        
+        .section-gradient-4 {
+            background: linear-gradient(180deg, #F9F9F9 0%, #EFEFEF 100%);
+        }
+        
+        .section-gradient-5 {
+            background: linear-gradient(180deg, #F0F5F9 0%, #E0EAF0 100%);
+        }
+        
+        /* Apple-style gradient backgrounds - Dark Mode */
+        .dark .section-gradient-1 {
+            background: linear-gradient(180deg, #1D1D1F 0%, #121215 100%);
+        }
+        
+        .dark .section-gradient-2 {
+            background: linear-gradient(180deg, #151A20 0%, #101318 100%);
+        }
+        
+        .dark .section-gradient-3 {
+            background: linear-gradient(180deg, #1A1A22 0%, #12121A 100%);
+        }
+        
+        .dark .section-gradient-4 {
+            background: linear-gradient(180deg, #181818 0%, #0F0F0F 100%);
+        }
+        
+        .dark .section-gradient-5 {
+            background: linear-gradient(180deg, #121620 0%, #0A0D14 100%);
+        }
+        
+        /* Timeline styles */
+        .timeline-node {
+            position: relative;
+        }
+        
+        .timeline-node::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 24px;
+            height: calc(100% - 24px);
+            width: 2px;
+            background-color: #0071e3;
+        }
+        
+        .timeline-node:last-child::before {
+            display: none;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -44px;
+            top: 24px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #0071e3;
+            z-index: 2;
+        }
+        
+        /* Apple-style button hover effect */
+        .btn-apple:hover {
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.2);
+        }
+        
+        /* Dark mode specific styles */
+        .dark .glassmorphism {
+            background-color: rgba(30, 30, 30, 0.7);
+        }
+        
+        .light .glassmorphism {
+            background-color: rgba(250, 250, 250, 0.7);
+        }
+        
+        /* Animation classes */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        
+        /* Menu toggle animations */
+        .hamburger-line {
+            transition: transform 0.3s ease, opacity 0.2s ease;
+        }
+        
+        .menu-open .line-1 {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .menu-open .line-2 {
+            opacity: 0;
+        }
+        
+        .menu-open .line-3 {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        /* Accordion styles - Improved for smoother transitions */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), padding-top 0.4s ease, padding-bottom 0.4s ease;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        
+        .accordion-active .accordion-content {
+            max-height: 600px;
+            padding-top: 0.5rem;
+            padding-bottom: 1rem;
+        }
+        
+        .accordion-icon {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .accordion-active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Apple-style accordion */
+        .apple-accordion {
+            border-radius: 30px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .apple-accordion-header {
+            padding: 15px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Hero slider */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        
+        /* Section gradients */
+        .gradient-section {
+            position: relative;
+        }
+        
+        .gradient-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.2));
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .dark .gradient-section::after {
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.2));
+        }
+        
+        /* Team carousel */
+        .team-carousel .swiper-slide {
+            width: 280px;
+            margin-right: 20px;
+            height: auto;
+        }
+        
+        /* Album carousel - Enhanced for larger centered images */
+        .album-carousel .swiper-slide {
+            width: 60%;  /* Made narrower for better side-edge visibility */
+            opacity: 0.3; /* More contrast between active/inactive */
+            transform: scale(0.8);
+            transition: all 0.6s ease;
+        }
+        
+        .album-carousel .swiper-slide-active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .gallery-img-container {
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        
+        /* Articles carousel */
+        .article-carousel .swiper-slide {
+            width: 320px;
+            margin-right: 20px;
+            height: auto;
+        }
+        
+        /* Sidebar overlay */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+            z-index: 39;
+        }
+        
+        .sidebar-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* Mobile sidebar menu */
+        #sidebar-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 50%;
+            max-width: 320px;
+            height: 100vh;
+            transform: translateX(100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background-color: rgba(28, 28, 30, 0.8);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 50;
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+        
+        /* This is the key class that makes the sidebar appear */
+        #sidebar-menu.translate-x-0 {
+            transform: translateX(0);
+        }
+        
+        #sidebar-menu .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        #sidebar-menu .close-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        #sidebar-menu .sidebar-header {
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+        }
+        
+        #sidebar-menu .menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        /* Improved sidebar links for better readability */
+        #sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .dark #sidebar-menu a {
+            color: white;
+        }
+        
+        #sidebar-menu .menu-icon {
+            background-color: #2871e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+        }
+        
+        #sidebar-menu #darkmode-toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(60, 60, 67, 0.5);
+            padding: 10px 12px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        #sidebar-menu #darkmode-toggle-container span {
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Program card with more rounded corners */
+        .program-card {
+            border-radius: 24px;
+        }
+        
+        /* Editable content classes */
+        [contenteditable="true"]:focus {
+            outline: 2px solid #0071e3;
+            border-radius: 4px;
+            padding: 2px;
+        }
+        
+        /* Swiper pagination custom styles */
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background-color: #0071e3;
+            opacity: 0.3;
+        }
+        
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
+        
+        /* Apple-style hero section */
+        .hero-apple {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .hero-apple-text {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+        
+        .hero-apple-title {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, #2c88d9, #d387ab);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-apple-subtitle {
+            font-size: 26px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-apple-title {
+                font-size: 32px;
+            }
+            
+            .hero-apple-subtitle {
+                font-size: 18px;
+            }
+            
+            #sidebar-menu {
+                width: 75%;
+            }
+            
+            /* Smaller fonts for mobile - NEW ADDITIONS */
+            h1, .text-4xl, .text-5xl, .text-6xl, .text-7xl {
+                font-size: 28px !important;
+                line-height: 1.2 !important;
+            }
+            
+            h2, .text-3xl {
+                font-size: 22px !important;
+                line-height: 1.2 !important;
+            }
+            
+            h3, .text-xl, .text-2xl {
+                font-size: 18px !important;
+                line-height: 1.3 !important;
+            }
+            
+            p, .text-base, .text-lg {
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+            }
+            
+            .text-sm {
+                font-size: 12px !important;
+            }
+            
+            .text-xs {
+                font-size: 10px !important;
+            }
+            
+            /* Button text adjustment for mobile */
+            button, .btn-apple {
+                font-size: 14px !important;
+            }
+            
+            /* Menu text adjustments */
+            #sidebar-menu a {
+                font-size: 14px !important;
+            }
+            
+            #sidebar-menu .menu-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+            
+            /* Adjust container paddings for better mobile spacing */
+            .container, .main-container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            /* Make form inputs more mobile-friendly */
+            input, textarea, select {
+                font-size: 14px !important;
+                padding: 0.5rem !important;
+            }
+        }
+        
+        /* Fixed size article cards */
+        .article-card {
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-img-container {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .article-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Container for consistent padding */
+        .container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                padding-left: 2.5rem;
+                padding-right: 2.5rem;
+            }
+        }
+        
+        /* Custom accordion arrow style */
+        .custom-accordion-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: rgba(0, 113, 227, 0.1);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+            color: #0071e3;
+        }
+        
+        .dark .custom-accordion-arrow {
+            background-color: rgba(0, 113, 227, 0.2);
+        }
+        
+        .accordion-active .custom-accordion-arrow {
+            transform: rotate(180deg);
+            background-color: rgba(0, 113, 227, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-apple-darkgray text-apple-darkgray dark:text-white transition-colors duration-500 overflow-x-hidden">
+    <!-- Scroll to top button -->
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 z-50 bg-apple-blue text-white p-3 rounded-full shadow-lg transition-apple opacity-0 pointer-events-none w-12 h-12 flex items-center justify-center">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 transition-apple glassmorphism light border-b border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo and title -->
+                <div class="flex items-center">
+                    <div class="flex space-x-2 mr-4">
+                        <!-- Placeholder for UNY logo -->
+                        <div class="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
+                            <span class="text-xs font-bold">UNY</span>
+                        </div>
+                        <!-- Placeholder for BEM KM logo -->
+                        <div class="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
+                            <span class="text-xs font-bold">BEM</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="text-lg sm:text-xl font-bold heading-apple hidden sm:block">KARIR DAN KARYA MAHASISWA</h1>
+                        <h1 class="text-lg font-bold heading-apple sm:hidden">KARIR DAN KARYA MAHASISWA</h1>
+                        <p class="text-xs text-apple-gray">BEM KM Universitas Negeri Yogyakarta</p>
+                    </div>
+                </div>
+
+                <!-- Menu toggle button -->
+                <button id="menu-toggle" class="p-2 focus:outline-none z-50">
+                    <div class="w-6 h-5 flex flex-col justify-between">
+                        <span class="hamburger-line w-full h-0.5 bg-apple-darkgray dark:bg-white rounded-full line-1"></span>
+                        <span class="hamburger-line w-full h-0.5 bg-apple-darkgray dark:bg-white rounded-full line-2"></span>
+                        <span class="hamburger-line w-full h-0.5 bg-apple-darkgray dark:bg-white rounded-full line-3"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <!-- Mobile sidebar menu - Redesigned with X button and compact layout -->
+    <div id="sidebar-menu" class="glassmorphism">
+        <!-- Close button (X) -->
+        <button id="sidebar-close" class="close-btn">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <!-- Sidebar header -->
+        <div class="sidebar-header">
+            <h3 class="text-lg font-semibold heading-apple text-black dark:text-white">Menu</h3>
+        </div>
+        
+        <!-- Menu links -->
+        <div class="menu-links">
+            <a href="#home" class="font-semibold heading-apple hover:text-apple-blue transition-apple">
+                <div class="menu-icon"><i class="fas fa-home"></i></div>
+                <span>Home</span>
+            </a>
+            <a href="#about" class="font-semibold heading-apple hover:text-apple-blue transition-apple">
+                <div class="menu-icon"><i class="fas fa-info-circle"></i></div>
+                <span>About</span>
+            </a>
+            <a href="#programs" class="font-semibold heading-apple hover:text-apple-blue transition-apple">
+                <div class="menu-icon"><i class="fas fa-box"></i></div>
+                <span>Program</span>
+            </a>
+            <a href="#team" class="font-semibold heading-apple hover:text-apple-blue transition-apple">
+                <div class="menu-icon"><i class="fas fa-users"></i></div>
+                <span>Team</span>
+            </a>
+            <a href="#timeline" class="font-semibold heading-apple hover:text-apple-blue transition-apple">
+                <div class="menu-icon"><i class="fas fa-calendar-alt"></i></div>
+                <span>Timeline</span>
+            </a>
+            <a href="#gallery" class="font-semibold heading-apple hover:text-apple-blue transition-apple">
+                <div class="menu-icon"><i class="fas fa-images"></i></div>
+                <span>Gallery</span>
+            </a>
+            <a href="#contact" class="font-semibold heading-apple hover:text-apple-blue transition-apple">
+                <div class="menu-icon"><i class="fas fa-envelope"></i></div>
+                <span>Contact</span>
+            </a>
+            <a href="#location" class="font-semibold heading-apple hover:text-apple-blue transition-apple">
+                <div class="menu-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <span>Location</span>
+            </a>
+        </div>
+        
+        <!-- Dark mode toggle -->
+        <div id="darkmode-toggle-container">
+            <div class="menu-icon" style="background-color: #F4A83A;"><i class="fas fa-sun"></i></div>
+            <span class="font-semibold heading-apple">Dark Mode</span>
+            <button id="darkmode-toggle" class="ml-auto w-12 h-7 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center transition-apple p-1">
+                <div id="darkmode-toggle-circle" class="w-5 h-5 bg-white rounded-full shadow-md transform dark:translate-x-5 transition-apple flex justify-center items-center">
+                    <i class="fas fa-sun text-yellow-500 dark:hidden text-xs"></i>
+                    <i class="fas fa-moon text-blue-300 hidden dark:block text-xs"></i>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <main>
+        <!-- Hero section with Apple style -->
+        <section id="home" class="w-full h-screen flex flex-col justify-center items-center overflow-hidden relative">
+            <!-- Hero image slider -->
+            <div class="absolute inset-0 z-0 bg-black">
+                <div class="hero-slider relative h-full w-full">
+                    <!-- Slide 1 -->
+                    <div class="hero-slide active">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1740&amp;q=80" alt="Students collaborating" class="w-full h-full object-cover opacity-40">
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="hero-slide">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1740&amp;q=80" alt="Team collaboration" class="w-full h-full object-cover opacity-40">
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="hero-slide">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1740&amp;q=80" alt="Creative workspace" class="w-full h-full object-cover opacity-40">
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="hero-slide">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1740&amp;q=80" alt="Professional meeting" class="w-full h-full object-cover opacity-40">
+                    </div>
+                    
+                    <!-- Slide 5 -->
+                    <div class="hero-slide">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1740&amp;q=80" alt="Campus life" class="w-full h-full object-cover opacity-40">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Apple-style centered text -->
+            <div class="container mx-auto px-4 text-center z-10 pt-24">
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold heading-apple mb-6 text-white leading-tight">
+                    GROW YOUR SKILL<br>WITH US
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto subheading-apple mb-8">
+                    Empowering students through career development and creative outlets
+                </p>
+                
+                <a href="#about" class="inline-flex items-center justify-center px-8 py-4 bg-apple-blue text-white rounded-full transition-apple hover:bg-blue-600 mt-4">
+                    <span class="font-medium text-lg">Learn More</span>
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Slider navigation -->
+            <div class="absolute bottom-6 left-0 right-0 flex justify-center space-x-2 z-10">
+                <button class="hero-nav-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity" data-index="0"></button>
+                <button class="hero-nav-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity" data-index="1"></button>
+                <button class="hero-nav-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity" data-index="2"></button>
+                <button class="hero-nav-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity" data-index="3"></button>
+                <button class="hero-nav-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity" data-index="4"></button>
+            </div>
+        </section>
+
+        <!-- About section -->
+        <section id="about" class="py-16 section-gradient-1 gradient-section">
+            <div class="main-container">
+                <div class="text-center mb-16">
+                    <span class="text-sm uppercase tracking-wider text-blue-500 dark:text-blue-300">Tentang Kami</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold heading-apple text-apple-darkgray dark:text-white mb-6 fade-up">Why We Born?</h2>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto fade-up">
+                        Kami hadir untuk menjembatani aspirasi dan peluang Anda. Baik itu pengembangan karir, ekspresi kreatif, atau jaringan profesional, misi kami adalah mendukung mahasiswa dalam menemukan passion dan mencapai tujuan mereka.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Skill Development -->
+                    <div class="bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-lg transition-apple transform hover:-translate-y-2 fade-up border border-white/20">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold heading-apple text-apple-darkgray dark:text-white mb-4">Skill Development</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Memberikan pelatihan dan sumber daya untuk mengembangkan keterampilan teknis dan soft skill yang relevan dengan kebutuhan dunia kerja modern.
+                        </p>
+                    </div>
+                    
+                    <!-- Creative Outlet -->
+                    <div class="bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-lg transition-apple transform hover:-translate-y-2 fade-up border border-white/20">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-paintbrush text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold heading-apple text-apple-darkgray dark:text-white mb-4">Creative Outlet</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Menyediakan platform bagi mahasiswa untuk mengekspresikan kreativitas mereka melalui berbagai proyek dan kolaborasi yang inovatif.
+                        </p>
+                    </div>
+                    
+                    <!-- Career Networking -->
+                    <div class="bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-lg transition-apple transform hover:-translate-y-2 fade-up border border-white/20">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-network-wired text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold heading-apple text-apple-darkgray dark:text-white mb-4">Career Networking</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Menghubungkan mahasiswa dengan profesional industri dan pemberi kerja potensial untuk memfasilitasi peluang karir yang berkelanjutan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs section -->
+        <section id="programs" class="py-16 section-gradient-2 gradient-section">
+            <div class="main-container">
+                <div class="text-center mb-16">
+                    <span class="text-sm uppercase tracking-wider text-purple-500 dark:text-purple-300">Program Kami</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold heading-apple text-apple-darkgray dark:text-white mb-6 fade-up">Our Programs</h2>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto fade-up">
+                        Kami menawarkan berbagai program yang dirancang untuk meningkatkan keterampilan, menampilkan bakat, dan mempersiapkan perjalanan karir Anda.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <!-- Program 1 -->
+                    <div class="bg-white/70 dark:bg-white/10 backdrop-blur-lg program-card overflow-hidden shadow-lg transition-apple fade-up border border-white/20">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="KKM Space" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold heading-apple mb-2 text-apple-darkgray dark:text-white">KKM Space</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                                A collaborative workspace for students to work, share ideas, and network.
+                            </p>
+                            <span class="bg-purple-100 dark:bg-purple-400/20 text-purple-600 dark:text-purple-200 px-3 py-1 rounded-full text-xs font-medium border border-purple-200 dark:border-purple-400/40">
+                                Coming Soon
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Program 2 -->
+                    <div class="bg-white/70 dark:bg-white/10 backdrop-blur-lg program-card overflow-hidden shadow-lg transition-apple fade-up border border-white/20">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="SkillUp [InsightUp]" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold heading-apple mb-2 text-apple-darkgray dark:text-white">SkillUp [InsightUp]</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                                Workshops and seminars focused on practical skill development.
+                            </p>
+                            <span class="bg-purple-100 dark:bg-purple-400/20 text-purple-600 dark:text-purple-200 px-3 py-1 rounded-full text-xs font-medium border border-purple-200 dark:border-purple-400/40">
+                                Coming Soon
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Program 3 -->
+                    <div class="bg-white/70 dark:bg-white/10 backdrop-blur-lg program-card overflow-hidden shadow-lg transition-apple fade-up border border-white/20">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="[WeGrowth!]" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold heading-apple mb-2 text-apple-darkgray dark:text-white">[WeGrowth!]</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                                Mentorship program connecting students with experienced professionals.
+                            </p>
+                            <span class="bg-purple-100 dark:bg-purple-400/20 text-purple-600 dark:text-purple-200 px-3 py-1 rounded-full text-xs font-medium border border-purple-200 dark:border-purple-400/40">
+                                Coming Soon
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Program 4 -->
+                    <div class="bg-white/70 dark:bg-white/10 backdrop-blur-lg program-card overflow-hidden shadow-lg transition-apple fade-up border border-white/20">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="[WeLearn!]" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold heading-apple mb-2 text-apple-darkgray dark:text-white">[WeLearn!]</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                                Educational resources and online courses for self-paced learning.
+                            </p>
+                            <span class="bg-purple-100 dark:bg-purple-400/20 text-purple-600 dark:text-purple-200 px-3 py-1 rounded-full text-xs font-medium border border-purple-200 dark:border-purple-400/40">
+                                Coming Soon
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Program 5 -->
+                    <div class="bg-white/70 dark:bg-white/10 backdrop-blur-lg program-card overflow-hidden shadow-lg transition-apple fade-up border border-white/20">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="Company Visit" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold heading-apple mb-2 text-apple-darkgray dark:text-white">Company Visit</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                                Field trips to companies to gain firsthand industry experience.
+                            </p>
+                            <span class="bg-purple-100 dark:bg-purple-400/20 text-purple-600 dark:text-purple-200 px-3 py-1 rounded-full text-xs font-medium border border-purple-200 dark:border-purple-400/40">
+                                Coming Soon
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team section with 6 members -->
+        <section id="team" class="py-16 section-gradient-3 gradient-section overflow-hidden">
+            <div class="main-container">
+                <div class="text-center mb-16">
+                    <span class="text-sm uppercase tracking-wider text-blue-500 dark:text-blue-300">Tim Kami</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold heading-apple text-apple-darkgray dark:text-white mb-6 fade-up">Meet With Our Team</h2>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto fade-up">
+                        Tim mahasiswa kami yang berdedikasi untuk membantu sesama tumbuh dan berkembang dalam meraih cita-cita mereka.
+                    </p>
+                </div>
+                
+                <!-- Team carousel -->
+                <div class="team-carousel-container relative overflow-hidden fade-up">
+                    <div class="swiper team-carousel">
+                        <div class="swiper-wrapper pb-10">
+                            <!-- Team member 1 -->
+                            <div class="swiper-slide">
+                                <div class="team-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple h-full border border-white/20 relative">
+                                    <div class="relative overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" alt="Team Member" class="w-full aspect-square object-cover img-zoom">
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="text-lg font-bold heading-apple mb-1 text-apple-darkgray dark:text-white">Jane Doe</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Head of Department</p>
+                                        <button class="team-btn w-full py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                                            Get in Touch
+                                        </button>
+                                        <div class="team-social-buttons">
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="fab fa-instagram text-white"></i>
+                                            </a>
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="far fa-envelope text-white"></i>
+                                            </a>
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="fab fa-linkedin-in text-white"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Team member 2 -->
+                            <div class="swiper-slide">
+                                <div class="team-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple h-full border border-white/20 relative">
+                                    <div class="relative overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=880&amp;q=80" alt="Team Member" class="w-full aspect-square object-cover img-zoom">
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="text-lg font-bold heading-apple mb-1 text-apple-darkgray dark:text-white">John Smith</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Vice Head of Department</p>
+                                        <button class="team-btn w-full py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                                            Get in Touch
+                                        </button>
+                                        <div class="team-social-buttons">
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="fab fa-instagram text-white"></i>
+                                            </a>
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="far fa-envelope text-white"></i>
+                                            </a>
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="fab fa-linkedin-in text-white"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Team member 3 -->
+                            <div class="swiper-slide">
+                                <div class="team-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple h-full border border-white/20 relative">
+                                    <div class="relative overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=761&amp;q=80" alt="Team Member" class="w-full aspect-square object-cover img-zoom">
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="text-lg font-bold heading-apple mb-1 text-apple-darkgray dark:text-white">Sarah Johnson</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Creative Director</p>
+                                        <button class="team-btn w-full py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                                            Get in Touch
+                                        </button>
+                                        <div class="team-social-buttons">
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="fab fa-instagram text-white"></i>
+                                            </a>
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="far fa-envelope text-white"></i>
+                                            </a>
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="fab fa-linkedin-in text-white"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Team member 4 -->
+                            <div class="swiper-slide">
+                                <div class="team-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple h-full border border-white/20 relative">
+                                    <div class="relative overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" alt="Team Member" class="w-full aspect-square object-cover img-zoom">
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="text-lg font-bold heading-apple mb-1 text-apple-darkgray dark:text-white">Michael Brown</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Event Coordinator</p>
+                                        <button class="team-btn w-full py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                                            Get in Touch
+                                        </button>
+                                        <div class="team-social-buttons">
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="fab fa-instagram text-white"></i>
+                                            </a>
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="far fa-envelope text-white"></i>
+                                            </a>
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="fab fa-linkedin-in text-white"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Team member 5 (New) -->
+                            <div class="swiper-slide">
+                                <div class="team-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple h-full border border-white/20 relative">
+                                    <div class="relative overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" alt="Team Member" class="w-full aspect-square object-cover img-zoom">
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="text-lg font-bold heading-apple mb-1 text-apple-darkgray dark:text-white">Emma Wilson</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Marketing Specialist</p>
+                                        <button class="team-btn w-full py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                                            Get in Touch
+                                        </button>
+                                        <div class="team-social-buttons">
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="fab fa-instagram text-white"></i>
+                                            </a>
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="far fa-envelope text-white"></i>
+                                            </a>
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="fab fa-linkedin-in text-white"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Team member 6 (New) -->
+                            <div class="swiper-slide">
+                                <div class="team-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple h-full border border-white/20 relative">
+                                    <div class="relative overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" alt="Team Member" class="w-full aspect-square object-cover img-zoom">
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="text-lg font-bold heading-apple mb-1 text-apple-darkgray dark:text-white">David Chen</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Content Creator</p>
+                                        <button class="team-btn w-full py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                                            Get in Touch
+                                        </button>
+                                        <div class="team-social-buttons">
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="fab fa-instagram text-white"></i>
+                                            </a>
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="far fa-envelope text-white"></i>
+                                            </a>
+                                            <a href="#" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                                                <i class="fab fa-linkedin-in text-white"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Add pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles section -->
+        <section id="articles" class="py-16 section-gradient-4 gradient-section">
+            <div class="main-container">
+                <div class="text-center mb-16">
+                    <span class="text-sm uppercase tracking-wider text-purple-500 dark:text-purple-300">Artikel Terbaru</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold heading-apple text-apple-darkgray dark:text-white mb-6 fade-up">Latest Articles</h2>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto fade-up">
+                        Wawasan, cerita, dan sumber daya untuk membantu Anda dalam perjalanan karir.
+                    </p>
+                </div>
+                
+                <!-- Articles carousel -->
+                <div class="article-carousel-container relative overflow-hidden fade-up">
+                    <div class="swiper article-carousel">
+                        <div class="swiper-wrapper pb-10">
+                            <!-- Article 1 -->
+                            <div class="swiper-slide">
+                                <div class="article-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple border border-white/20">
+                                    <div class="article-img-container">
+                                        <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1147&amp;q=80" alt="Article thumbnail" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="article-content p-6">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=761&amp;q=80" alt="Author" class="w-full h-full object-cover">
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-apple-darkgray dark:text-white">Sarah Johnson</p>
+                                                <p class="text-xs text-gray-600 dark:text-gray-300">June 15, 2024</p>
+                                            </div>
+                                        </div>
+                                        <h3 class="text-lg font-bold heading-apple mb-3 text-apple-darkgray dark:text-white">How to Build a Professional Network While in College</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+                                            Learn effective strategies for building a professional network that will serve you well after graduation.
+                                        </p>
+                                        <div class="mt-auto">
+                                            <a href="#" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
+                                                Read Article
+                                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Article 2 -->
+                            <div class="swiper-slide">
+                                <div class="article-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple border border-white/20">
+                                    <div class="article-img-container">
+                                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="Article thumbnail" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="article-content p-6">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                                                <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" alt="Author" class="w-full h-full object-cover">
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-apple-darkgray dark:text-white">Michael Brown</p>
+                                                <p class="text-xs text-gray-600 dark:text-gray-300">May 28, 2024</p>
+                                            </div>
+                                        </div>
+                                        <h3 class="text-lg font-bold heading-apple mb-3 text-apple-darkgray dark:text-white">The Top Skills Employers Are Looking For in 2024</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+                                            Discover the most in-demand skills in today's job market and how you can develop them.
+                                        </p>
+                                        <div class="mt-auto">
+                                            <a href="#" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
+                                                Read Article
+                                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Article 3 -->
+                            <div class="swiper-slide">
+                                <div class="article-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple border border-white/20">
+                                    <div class="article-img-container">
+                                        <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1106&amp;q=80" alt="Article thumbnail" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="article-content p-6">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                                                <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=880&amp;q=80" alt="Author" class="w-full h-full object-cover">
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-apple-darkgray dark:text-white">John Smith</p>
+                                                <p class="text-xs text-gray-600 dark:text-gray-300">May 10, 2024</p>
+                                            </div>
+                                        </div>
+                                        <h3 class="text-lg font-bold heading-apple mb-3 text-apple-darkgray dark:text-white">How to Balance Academics and Career Development</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+                                            Practical tips for managing your coursework while also building your professional skills and experience.
+                                        </p>
+                                        <div class="mt-auto">
+                                            <a href="#" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
+                                                Read Article
+                                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Article 4 -->
+                            <div class="swiper-slide">
+                                <div class="article-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple border border-white/20">
+                                    <div class="article-img-container">
+                                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1171&amp;q=80" alt="Article thumbnail" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="article-content p-6">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                                                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" alt="Author" class="w-full h-full object-cover">
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-apple-darkgray dark:text-white">Jane Doe</p>
+                                                <p class="text-xs text-gray-600 dark:text-gray-300">April 22, 2024</p>
+                                            </div>
+                                        </div>
+                                        <h3 class="text-lg font-bold heading-apple mb-3 text-apple-darkgray dark:text-white">Leveraging Student Organizations for Career Growth</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+                                            How to make the most of your involvement in student organizations to enhance your professional development.
+                                        </p>
+                                        <div class="mt-auto">
+                                            <a href="#" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
+                                                Read Article
+                                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Add pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                
+                <!-- View all articles button -->
+                <div class="text-center mt-10">
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white rounded-full shadow-lg transition-apple hover:bg-white/30 dark:hover:bg-white/20 border border-white/20">
+                        View All Articles
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline section -->
+        <section id="timeline" class="py-16 section-gradient-5 gradient-section">
+            <div class="main-container">
+                <div class="text-center mb-16">
+                    <span class="text-sm uppercase tracking-wider text-blue-500 dark:text-blue-300">Timeline Program</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold heading-apple text-apple-darkgray dark:text-white mb-6 fade-up">Program Timeline</h2>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto fade-up">
+                        Jadwal kegiatan dan program kami untuk tahun akademik 2025.
+                    </p>
+                </div>
+                
+                <div class="max-w-3xl mx-auto">
+                    <!-- Timeline accordion - Updated with improved arrow -->
+                    <div class="space-y-6 relative pl-10">
+                        <!-- April 2025 -->
+                        <div class="timeline-node">
+                            <div class="timeline-dot"></div>
+                            <div class="apple-accordion bg-white/70 dark:bg-white/10 backdrop-blur-lg shadow-lg transition-apple fade-up border border-white/20">
+                                <div class="apple-accordion-header flex justify-between items-center cursor-pointer">
+                                    <div class="pl-4">
+                                        <h3 class="text-lg font-bold heading-apple text-apple-darkgray dark:text-white">SkillUp Workshop Series</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm">April 2025</p>
+                                    </div>
+                                    <span class="accordion-icon pr-4">
+                                        <div class="custom-accordion-arrow">
+                                            <i class="fas fa-chevron-down text-sm"></i>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="accordion-content px-4 text-gray-600 dark:text-gray-300">
+                                    <p class="mb-4">A series of workshops focusing on key skills such as resume writing, interview preparation, and professional communication.</p>
+                                    <button class="px-6 py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                                        Coming Soon
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- May 2025 -->
+                        <div class="timeline-node">
+                            <div class="timeline-dot"></div>
+                            <div class="apple-accordion bg-white/70 dark:bg-white/10 backdrop-blur-lg shadow-lg transition-apple fade-up border border-white/20">
+                                <div class="apple-accordion-header flex justify-between items-center cursor-pointer">
+                                    <div class="pl-4">
+                                        <h3 class="text-lg font-bold heading-apple text-apple-darkgray dark:text-white">KKM Space Launch</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm">May 2025</p>
+                                    </div>
+                                    <span class="accordion-icon pr-4">
+                                        <div class="custom-accordion-arrow">
+                                            <i class="fas fa-chevron-down text-sm"></i>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="accordion-content px-4 text-gray-600 dark:text-gray-300">
+                                    <p class="mb-4">Grand opening of our collaborative workspace with networking opportunities, guest speakers, and workshops.</p>
+                                    <button class="px-6 py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                                        Coming Soon
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- July 2025 -->
+                        <div class="timeline-node">
+                            <div class="timeline-dot"></div>
+                            <div class="apple-accordion bg-white/70 dark:bg-white/10 backdrop-blur-lg shadow-lg transition-apple fade-up border border-white/20">
+                                <div class="apple-accordion-header flex justify-between items-center cursor-pointer">
+                                    <div class="pl-4">
+                                        <h3 class="text-lg font-bold heading-apple text-apple-darkgray dark:text-white">Company Visit Week</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm">July 2025</p>
+                                    </div>
+                                    <span class="accordion-icon pr-4">
+                                        <div class="custom-accordion-arrow">
+                                            <i class="fas fa-chevron-down text-sm"></i>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="accordion-content px-4 text-gray-600 dark:text-gray-300">
+                                    <p class="mb-4">A week-long series of visits to various companies and organizations in the region to provide students with insights into different industries.</p>
+                                    <button class="px-6 py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                                        Coming Soon
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- August 2025 -->
+                        <div class="timeline-node">
+                            <div class="timeline-dot"></div>
+                            <div class="apple-accordion bg-white/70 dark:bg-white/10 backdrop-blur-lg shadow-lg transition-apple fade-up border border-white/20">
+                                <div class="apple-accordion-header flex justify-between items-center cursor-pointer">
+                                    <div class="pl-4">
+                                        <h3 class="text-lg font-bold heading-apple text-apple-darkgray dark:text-white">WeGrowth Mentorship Program</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm">August 2025</p>
+                                    </div>
+                                    <span class="accordion-icon pr-4">
+                                        <div class="custom-accordion-arrow">
+                                            <i class="fas fa-chevron-down text-sm"></i>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="accordion-content px-4 text-gray-600 dark:text-gray-300">
+                                    <p class="mb-4">Launch of our mentorship program connecting students with experienced professionals in their field of interest.</p>
+                                    <button class="px-6 py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                                        Coming Soon
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- September 2025 -->
+                        <div class="timeline-node">
+                            <div class="timeline-dot"></div>
+                            <div class="apple-accordion bg-white/70 dark:bg-white/10 backdrop-blur-lg shadow-lg transition-apple fade-up border border-white/20">
+                                <div class="apple-accordion-header flex justify-between items-center cursor-pointer">
+                                    <div class="pl-4">
+                                        <h3 class="text-lg font-bold heading-apple text-apple-darkgray dark:text-white">Student Work Exhibition</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm">September 2025</p>
+                                    </div>
+                                    <span class="accordion-icon pr-4">
+                                        <div class="custom-accordion-arrow">
+                                            <i class="fas fa-chevron-down text-sm"></i>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="accordion-content px-4 text-gray-600 dark:text-gray-300">
+                                    <p class="mb-4">An exhibition showcasing student projects, artwork, and innovative ideas to the university community and industry professionals.</p>
+                                    <button class="px-6 py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                                        Coming Soon
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery section -->
+        <section id="gallery" class="py-16 section-gradient-1 gradient-section overflow-hidden">
+            <div class="main-container">
+                <div class="text-center mb-16">
+                    <span class="text-sm uppercase tracking-wider text-purple-500 dark:text-purple-300">Galeri Kegiatan</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold heading-apple text-apple-darkgray dark:text-white mb-6 fade-up">Our Activity Gallery</h2>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto fade-up">
+                        Dokumentasi kegiatan dan acara kami yang telah membantu mahasiswa tumbuh dan berkembang.
+                    </p>
+                </div>
+                
+                <!-- Album carousel - Fixed for centered active slide -->
+                <div class="album-carousel-container relative overflow-hidden fade-up">
+                    <div class="swiper album-carousel">
+                        <div class="swiper-wrapper pb-10">
+                            <!-- Gallery item 1 -->
+                            <div class="swiper-slide">
+                                <div class="rounded-2xl overflow-hidden shadow-lg h-full">
+                                    <div class="gallery-img-container">
+                                        <img src="https://images.unsplash.com/photo-1540317580384-e5d43867caa6?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="Workshop" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                                            <h3 class="text-white text-xl font-bold heading-apple">Workshop: Resume Building</h3>
+                                            <p class="text-white/80 text-sm mt-2">March 2024</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Gallery item 2 -->
+                            <div class="swiper-slide">
+                                <div class="rounded-2xl overflow-hidden shadow-lg h-full">
+                                    <div class="gallery-img-container">
+                                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="Company Visit" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                                            <h3 class="text-white text-xl font-bold heading-apple">Company Visit: Tech Startup</h3>
+                                            <p class="text-white/80 text-sm mt-2">February 2024</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Gallery item 3 -->
+                            <div class="swiper-slide">
+                                <div class="rounded-2xl overflow-hidden shadow-lg h-full">
+                                    <div class="gallery-img-container">
+                                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="Career Fair" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                                            <h3 class="text-white text-xl font-bold heading-apple">Career Fair 2024</h3>
+                                            <p class="text-white/80 text-sm mt-2">January 2024</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Gallery item 4 -->
+                            <div class="swiper-slide">
+                                <div class="rounded-2xl overflow-hidden shadow-lg h-full">
+                                    <div class="gallery-img-container">
+                                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="Networking Event" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                                            <h3 class="text-white text-xl font-bold heading-apple">Networking Night</h3>
+                                            <p class="text-white/80 text-sm mt-2">December 2023</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Gallery item 5 -->
+                            <div class="swiper-slide">
+                                <div class="rounded-2xl overflow-hidden shadow-lg h-full">
+                                    <div class="gallery-img-container">
+                                        <img src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="Panel Discussion" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                                            <h3 class="text-white text-xl font-bold heading-apple">Panel Discussion: Future of Work</h3>
+                                            <p class="text-white/80 text-sm mt-2">November 2023</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Gallery item 6 -->
+                            <div class="swiper-slide">
+                                <div class="rounded-2xl overflow-hidden shadow-lg h-full">
+                                    <div class="gallery-img-container">
+                                        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1112&amp;q=80" alt="Student Exhibition" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                                            <h3 class="text-white text-xl font-bold heading-apple">Student Work Exhibition</h3>
+                                            <p class="text-white/80 text-sm mt-2">October 2023</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Add pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                
+                <!-- View all button -->
+                <div class="text-center mt-12">
+                    <button class="px-8 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white rounded-full transition-apple hover:bg-white/30 dark:hover:bg-white/20 border border-white/20 fade-up">
+                        View Full Gallery
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact section -->
+        <section id="contact" class="py-16 section-gradient-2 gradient-section">
+            <div class="main-container">
+                <div class="text-center mb-16">
+                    <span class="text-sm uppercase tracking-wider text-blue-500 dark:text-blue-300">Kontak Kami</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold heading-apple text-apple-darkgray dark:text-white mb-6 fade-up">Get In Touch</h2>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto fade-up">
+                        Punya pertanyaan atau ingin berkolaborasi? Hubungi kami segera!
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Contact info -->
+                    <div class="fade-up">
+                        <div class="bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-lg transition-apple h-full border border-white/20">
+                            <h3 class="text-2xl font-bold heading-apple mb-6 text-apple-darkgray dark:text-white">Connect With Us</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                        <i class="fab fa-instagram text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold heading-apple text-apple-darkgray dark:text-white">Instagram</h4>
+                                        <p class="text-gray-600 dark:text-gray-300 mb-2">Follow us for updates</p>
+                                        <a href="https://instagram.com/kkm.bemuny" target="_blank" class="text-blue-500 dark:text-blue-300 font-medium">@kkm.bemuny</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                        <i class="far fa-envelope text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold heading-apple text-apple-darkgray dark:text-white">Email</h4>
+                                        <p class="text-gray-600 dark:text-gray-300 mb-2">We'd love to hear from you</p>
+                                        <a href="mailto:kkmbemuny@gmail.com" class="text-blue-500 dark:text-blue-300 font-medium">kkmbemuny@gmail.com</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                        <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold heading-apple text-apple-darkgray dark:text-white">Location</h4>
+                                        <p class="text-gray-600 dark:text-gray-300 mb-2">Visit our office</p>
+                                        <p class="text-apple-darkgray dark:text-white">Student Center Building, Universitas Negeri Yogyakarta, Karangmalang, Yogyakarta</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact form -->
+                    <div class="fade-up">
+                        <div class="bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-lg transition-apple border border-white/20">
+                            <h3 class="text-2xl font-bold heading-apple mb-6 text-apple-darkgray dark:text-white">Send a Message</h3>
+                            
+                            <form id="contact-form" class="space-y-6" action="https://formspree.io/f/kkmbemuny@gmail.com" method="POST">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Name</label>
+                                    <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 text-base" required="">
+                                </div>
+                                
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Email</label>
+                                    <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 text-base" required="">
+                                </div>
+                                
+                                <div>
+                                    <label for="subject" class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Subject</label>
+                                    <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 text-base" required="">
+                                </div>
+                                
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Message</label>
+                                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 text-base" required=""></textarea>
+                                </div>
+                                
+                                <div class="pt-2">
+                                    <button type="submit" class="w-full py-3 bg-apple-blue text-white rounded-full btn-apple transition-apple font-medium">
+                                        Send Message
+                                    </button>
+                                </div>
+                            </form>
+                            
+                            <!-- Success message (hidden by default) -->
+                            <div id="success-message" class="hidden mt-6 p-4 bg-green-900/60 border border-green-500/20 backdrop-blur-lg text-green-200 rounded-lg">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                    <p>Your message has been sent successfully! We'll get back to you soon.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location section -->
+        <section id="location" class="py-16 section-gradient-3 gradient-section">
+            <div class="main-container">
+                <div class="text-center mb-16">
+                    <span class="text-sm uppercase tracking-wider text-purple-500 dark:text-purple-300">Lokasi Kami</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold heading-apple text-apple-darkgray dark:text-white mb-6 fade-up">Our Location</h2>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto fade-up">
+                        Kunjungi kami di Student Center Building, Universitas Negeri Yogyakarta.
+                    </p>
+                </div>
+                
+                <div class="rounded-2xl overflow-hidden shadow-lg transition-apple fade-up">
+                    <!-- Google Maps embed -->
+                    <div class="relative aspect-video">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.1633170025876!2d110.3866113!3d-7.7735978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59b2d7b98905%3A0x19ad4f9a195770c7!2sUniversitas%20Negeri%20Yogyakarta!5e0!3m2!1sen!2sid!4v1656483265685!5m2!1sen!2sid" class="absolute inset-0 w-full h-full border-0" style="filter: grayscale(0.5);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    
+                    <!-- Map info overlay -->
+                    <div class="bg-white/20 dark:bg-white/10 backdrop-blur-lg p-6 transition-apple border-t border-white/20">
+                        <div class="flex flex-wrap justify-between items-center">
+                            <div class="mb-4 md:mb-0">
+                                <h3 class="text-xl font-bold heading-apple mb-2 text-apple-darkgray dark:text-white">Student Center Building</h3>
+                                <p class="text-gray-600 dark:text-gray-300">Universitas Negeri Yogyakarta, Karangmalang, Yogyakarta</p>
+                            </div>
+                            <div class="flex space-x-4">
+                                <button class="px-4 py-2 bg-white/20 dark:bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white rounded-lg transition-apple hover:bg-white/30 dark:hover:bg-white/20 border border-white/20">
+                                    <i class="fas fa-share-alt mr-2"></i> Share
+                                </button>
+                                <button class="px-4 py-2 bg-apple-blue text-white rounded-lg transition-apple hover:bg-blue-600">
+                                    <i class="fas fa-directions mr-2"></i> Directions
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTA section -->
+                <div class="mt-24 text-center fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold heading-apple mb-6 text-apple-darkgray dark:text-white">For Your Better Future</h2>
+                    <p class="text-gray-600 dark:text-gray-300 text-xl max-w-3xl mx-auto mb-10">
+                        Join us at Karir dan Karya Mahasiswa to enhance your skills, showcase your talent, and prepare for your future career.
+                    </p>
+                    <button class="px-8 py-4 bg-apple-blue text-white rounded-full btn-apple transition-apple text-lg font-medium">
+                        Join Our Community
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Logo and description -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <div class="flex space-x-2 mr-4">
+                            <!-- Placeholder for UNY logo -->
+                            <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                                <span class="text-xs font-bold">UNY</span>
+                            </div>
+                            <!-- Placeholder for BEM KM logo -->
+                            <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                                <span class="text-xs font-bold">BEM</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold heading-apple">KARIR DAN KARYA MAHASISWA</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Dedicated to helping students at Universitas Negeri Yogyakarta develop their skills, showcase their talent, and prepare for their future careers.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/kkm.bemuny" target="_blank" class="text-gray-400 hover:text-white transition-apple">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-apple">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-apple">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-apple">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick links -->
+                <div>
+                    <h4 class="text-lg font-bold heading-apple mb-6">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-apple">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-apple">About Us</a></li>
+                        <li><a href="#programs" class="text-gray-400 hover:text-white transition-apple">Programs</a></li>
+                        <li><a href="#team" class="text-gray-400 hover:text-white transition-apple">Our Team</a></li>
+                        <li><a href="#articles" class="text-gray-400 hover:text-white transition-apple">Articles</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition-apple">Gallery</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-apple">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact info -->
+                <div>
+                    <h4 class="text-lg font-bold heading-apple mb-6">Contact Info</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-apple-blue mt-1 mr-3"></i>
+                            <span class="text-gray-400">Student Center Building, Universitas Negeri Yogyakarta, Karangmalang, Yogyakarta</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="far fa-envelope text-apple-blue mt-1 mr-3"></i>
+                            <a href="mailto:kkmbemuny@gmail.com" class="text-gray-400 hover:text-white transition-apple">kkmbemuny@gmail.com</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-instagram text-apple-blue mt-1 mr-3"></i>
+                            <a href="https://instagram.com/kkm.bemuny" target="_blank" class="text-gray-400 hover:text-white transition-apple">@kkm.bemuny</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="border-gray-800 my-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    © 2025 Karir dan Karya Mahasiswa BEM KM UNY. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-apple">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-apple">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize on document load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dark mode setup
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+            }
+            
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+                if (event.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                updateHeaderClass();
+            });
+            
+            // Dark mode toggle
+            const darkmodeToggle = document.getElementById('darkmode-toggle');
+            darkmodeToggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+                updateHeaderClass();
+            });
+            
+            // Mobile menu toggle - Fixed to work with both hamburger and X button
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebarClose = document.getElementById('sidebar-close');
+            const sidebarMenu = document.getElementById('sidebar-menu');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+            
+            // Open menu when clicking hamburger
+            menuToggle.addEventListener('click', function() {
+                menuToggle.classList.add('menu-open');
+                sidebarMenu.classList.add('translate-x-0');
+                sidebarOverlay.classList.add('active');
+                document.body.classList.add('overflow-hidden');
+            });
+            
+            // Close menu when clicking X button
+            sidebarClose.addEventListener('click', function() {
+                menuToggle.classList.remove('menu-open');
+                sidebarMenu.classList.remove('translate-x-0');
+                sidebarOverlay.classList.remove('active');
+                document.body.classList.remove('overflow-hidden');
+            });
+            
+            // Close menu when clicking overlay
+            sidebarOverlay.addEventListener('click', function() {
+                menuToggle.classList.remove('menu-open');
+                sidebarMenu.classList.remove('translate-x-0');
+                sidebarOverlay.classList.remove('active');
+                document.body.classList.remove('overflow-hidden');
+            });
+            
+            // Close menu when clicking a link
+            const menuLinks = document.querySelectorAll('#sidebar-menu a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menuToggle.classList.remove('menu-open');
+                    sidebarMenu.classList.remove('translate-x-0');
+                    sidebarOverlay.classList.remove('active');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            });
+            
+            // Accordion functionality - Improved for smoother transitions
+            const accordionHeaders = document.querySelectorAll('.apple-accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const accordion = this.parentElement;
+                    const wasActive = accordion.classList.contains('accordion-active');
+                    
+                    // Close all accordions first
+                    document.querySelectorAll('.apple-accordion').forEach(acc => {
+                        acc.classList.remove('accordion-active');
+                    });
+                    
+                    // If it wasn't active before, activate it
+                    if (!wasActive) {
+                        accordion.classList.add('accordion-active');
+                    }
+                });
+            });
+            
+            // Smooth scroll for "Learn More" button
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('success-message');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Validate form
+                    let valid = true;
+                    const inputs = contactForm.querySelectorAll('input, textarea');
+                    inputs.forEach(input => {
+                        if (!input.checkValidity()) {
+                            valid = false;
+                            input.classList.add('border-red-500');
+                        } else {
+                            input.classList.remove('border-red-500');
+                        }
+                    });
+                    
+                    if (valid) {
+                        // Get form data
+                        const formData = new FormData(contactForm);
+                        
+                        // Send email using EmailJS or other service
+                        fetch('https://formspree.io/f/kkmbemuny@gmail.com', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                contactForm.reset();
+                                successMessage.classList.remove('hidden');
+                                
+                                // Hide success message after 5 seconds
+                                setTimeout(() => {
+                                    successMessage.classList.add('hidden');
+                                }, 5000);
+                            } else {
+                                throw new Error('Network response was not ok');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                    }
+                });
+            }
+            
+            // Hero slider functionality
+            const heroSlides = document.querySelectorAll('.hero-slide');
+            const heroDots = document.querySelectorAll('.hero-nav-dot');
+            let currentSlide = 0;
+            let slideInterval;
+            
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Hide all slides
+                heroSlides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Remove active class from all dots
+                heroDots.forEach(dot => {
+                    dot.classList.remove('opacity-100');
+                    dot.classList.add('opacity-50');
+                });
+                
+                // Show the selected slide
+                heroSlides[index].classList.add('active');
+                
+                // Highlight the corresponding dot
+                heroDots[index].classList.remove('opacity-50');
+                heroDots[index].classList.add('opacity-100');
+                
+                // Update current slide index
+                currentSlide = index;
+            }
+            
+            // Function to advance to the next slide
+            function nextSlide() {
+                let next = currentSlide + 1;
+                if (next >= heroSlides.length) {
+                    next = 0;
+                }
+                showSlide(next);
+            }
+            
+            // Start automatic slideshow
+            function startSlideshow() {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            // Add click event to dots
+            heroDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(slideInterval);
+                    showSlide(index);
+                    startSlideshow();
+                });
+            });
+            
+            // Initialize the first slide and start slideshow
+            if (heroSlides.length > 0) {
+                showSlide(0);
+                startSlideshow();
+            }
+            
+            // Initialize Swiper carousels
+            if (typeof Swiper !== 'undefined') {
+                // Team carousel
+                const teamCarouselElement = document.querySelector('.team-carousel');
+                if (teamCarouselElement) {
+                    const teamCarousel = new Swiper('.team-carousel', {
+                        slidesPerView: 'auto',
+                        spaceBetween: 20,
+                        pagination: {
+                            el: '.team-carousel .swiper-pagination',
+                            clickable: true,
+                        },
+                        breakpoints: {
+                            640: {
+                                slidesPerView: 2,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                            },
+                            1024: {
+                                slidesPerView: 4,
+                            },
+                        },
+                    });
+                }
+                
+                // Album carousel - Fixed for centered images - Improved
+                const albumCarouselElement = document.querySelector('.album-carousel');
+                if (albumCarouselElement) {
+                    const albumCarousel = new Swiper('.album-carousel', {
+                        slidesPerView: 'auto',
+                        centeredSlides: true,
+                        spaceBetween: 30,
+                        loop: true,
+                        loopedSlides: 3,
+                        speed: 800, // Smoother transition
+                        effect: 'slide',
+                        grabCursor: true,
+                        pagination: {
+                            el: '.album-carousel .swiper-pagination',
+                            clickable: true,
+                        },
+                    });
+                }
+                
+                // Articles carousel
+                const articleCarouselElement = document.querySelector('.article-carousel');
+                if (articleCarouselElement) {
+                    const articleCarousel = new Swiper('.article-carousel', {
+                        slidesPerView: 'auto',
+                        spaceBetween: 20,
+                        pagination: {
+                            el: '.article-carousel .swiper-pagination',
+                            clickable: true,
+                        },
+                        breakpoints: {
+                            640: {
+                                slidesPerView: 2,
+                            },
+                            1024: {
+                                slidesPerView: 3,
+                            },
+                        },
+                    });
+                }
+            }
+            
+            // Team member card social buttons toggle
+            const teamButtons = document.querySelectorAll('.team-card .team-btn');
+            teamButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const teamCard = this.closest('.team-card');
+                    
+                    // First close all other team cards
+                    document.querySelectorAll('.team-card.active').forEach(card => {
+                        if (card !== teamCard) {
+                            card.classList.remove('active');
+                        }
+                    });
+                    
+                    // Then toggle the current team card
+                    teamCard.classList.toggle('active');
+                });
+            });
+            
+            // Close team social buttons when clicking elsewhere
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.team-card')) {
+                    document.querySelectorAll('.team-card.active').forEach(card => {
+                        card.classList.remove('active');
+                    });
+                }
+            });
+            
+            // Scroll to top button
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.remove('opacity-0');
+                    scrollToTopBtn.classList.add('opacity-100');
+                    scrollToTopBtn.classList.remove('pointer-events-none');
+                } else {
+                    scrollToTopBtn.classList.remove('opacity-100');
+                    scrollToTopBtn.classList.add('opacity-0');
+                    scrollToTopBtn.classList.add('pointer-events-none');
+                }
+            });
+            
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Update header glass effect class
+            function updateHeaderClass() {
+                const header = document.querySelector('header');
+                if (document.documentElement.classList.contains('dark')) {
+                    header.classList.remove('light');
+                    header.classList.add('dark');
+                } else {
+                    header.classList.remove('dark');
+                    header.classList.add('light');
+                }
+            }
+            
+            // Initialize GSAP animations if available
+            if (typeof gsap !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+                
+                // Fade up animations
+                const fadeUpElements = document.querySelectorAll('.fade-up');
+                fadeUpElements.forEach(element => {
+                    gsap.fromTo(element, 
+                        { opacity: 0, y: 30 },
+                        { 
+                            opacity: 1, 
+                            y: 0, 
+                            duration: 0.8, 
+                            ease: "power2.out",
+                            scrollTrigger: {
+                                trigger: element,
+                                start: "top 90%",
+                                toggleActions: "play none none none"
+                            }
+                        }
+                    );
+                });
+            } else {
+                // Fallback for when GSAP isn't available
+                document.querySelectorAll('.fade-up, .slide-in-right, .slide-in-left').forEach(el => {
+                    el.style.opacity = 1;
+                    el.style.transform = 'none';
+                });
+            }
+        });
+    </script>
+
+    <!-- Script untuk Netlify Identity -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+
+    <!-- Script untuk mengambil data dari CMS -->
+    <script>
+      // Fungsi untuk mengambil data dari file JSON yang dibuat oleh CMS
+      async function fetchData(collection) {
+        try {
+          const response = await fetch(`/_data/${collection}.json`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return await response.json();
+        } catch (error) {
+          console.error(`Couldn't fetch ${collection} data:`, error);
+          return [];
+        }
+      }
+
+      // Panggil fungsi saat dokumen dimuat
+      document.addEventListener('DOMContentLoaded', async () => {
+        // Contoh: Memuat data tim
+        const teamData = await fetchData('team');
+        if (teamData.length > 0) {
+          // Perbarui konten tim di UI
+          updateTeamData(teamData);
+        }
+        
+        // Contoh: Memuat data program
+        const programsData = await fetchData('programs');
+        if (programsData.length > 0) {
+          // Perbarui konten program di UI
+          updateProgramsData(programsData);
+        }
+        
+        // Memuat data artikel
+        const articlesData = await fetchData('articles');
+        if (articlesData.length > 0) {
+          updateArticlesData(articlesData);
+        }
+        
+        // Memuat data timeline
+        const timelineData = await fetchData('timeline');
+        if (timelineData.length > 0) {
+          updateTimelineData(timelineData);
+        }
+      });
+      
+      // Fungsi untuk memperbarui data tim
+      function updateTeamData(teamData) {
+        const teamContainer = document.querySelector('.team-carousel .swiper-wrapper');
+        if (!teamContainer) return;
+        
+        // Bersihkan konten yang ada
+        teamContainer.innerHTML = '';
+        
+        // Tambahkan data tim dari CMS
+        teamData.forEach(member => {
+          const memberHTML = `
+            <div class="swiper-slide">
+              <div class="team-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple h-full border border-white/20 relative">
+                <div class="relative overflow-hidden">
+                  <img src="${member.photo || 'https://via.placeholder.com/400x400'}" alt="${member.name}" class="w-full aspect-square object-cover img-zoom">
+                </div>
+                <div class="p-6">
+                  <h3 class="text-lg font-bold heading-apple mb-1 text-apple-darkgray dark:text-white">${member.name}</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">${member.position}</p>
+                  <button class="team-btn w-full py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                    Get in Touch
+                  </button>
+                  <div class="team-social-buttons">
+                    ${member.instagram ? `<a href="${member.instagram}" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                      <i class="fab fa-instagram text-white"></i>
+                    </a>` : ''}
+                    ${member.email ? `<a href="mailto:${member.email}" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                      <i class="far fa-envelope text-white"></i>
+                    </a>` : ''}
+                    ${member.linkedin ? `<a href="${member.linkedin}" class="w-10 h-10 bg-apple-blue rounded-full flex items-center justify-center">
+                      <i class="fab fa-linkedin-in text-white"></i>
+                    </a>` : ''}
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          teamContainer.innerHTML += memberHTML;
+        });
+        
+        // Reinisialisasi Swiper
+        if (typeof Swiper !== 'undefined') {
+          new Swiper('.team-carousel', {
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            pagination: {
+              el: '.team-carousel .swiper-pagination',
+              clickable: true,
+            },
+            breakpoints: {
+              640: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 4,
+              },
+            },
+          });
+        }
+      }
+      
+      // Fungsi untuk memperbarui data program
+      function updateProgramsData(programsData) {
+        const programsContainer = document.querySelector('#programs .grid');
+        if (!programsContainer) return;
+        
+        // Bersihkan konten yang ada
+        programsContainer.innerHTML = '';
+        
+        // Tambahkan data program dari CMS
+        programsData.forEach(program => {
+          const programHTML = `
+            <div class="bg-white/70 dark:bg-white/10 backdrop-blur-lg program-card overflow-hidden shadow-lg transition-apple fade-up border border-white/20">
+              <div class="relative h-48 overflow-hidden">
+                <img src="${program.image || 'https://via.placeholder.com/800x450'}" alt="${program.title}" class="w-full h-full object-cover img-zoom">
+              </div>
+              <div class="p-5">
+                <h3 class="text-lg font-bold heading-apple mb-2 text-apple-darkgray dark:text-white">${program.title}</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                  ${program.description}
+                </p>
+                <span class="bg-purple-100 dark:bg-purple-400/20 text-purple-600 dark:text-purple-200 px-3 py-1 rounded-full text-xs font-medium border border-purple-200 dark:border-purple-400/40">
+                  ${program.status || 'Coming Soon'}
+                </span>
+              </div>
+            </div>
+          `;
+          programsContainer.innerHTML += programHTML;
+        });
+      }
+      
+      // Fungsi untuk memperbarui data artikel
+      function updateArticlesData(articlesData) {
+        const articlesContainer = document.querySelector('.article-carousel .swiper-wrapper');
+        if (!articlesContainer) return;
+        
+        // Bersihkan konten yang ada
+        articlesContainer.innerHTML = '';
+        
+        // Tambahkan data artikel dari CMS
+        articlesData.forEach(article => {
+          const articleHTML = `
+            <div class="swiper-slide">
+              <div class="article-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple border border-white/20">
+                <div class="article-img-container">
+                  <img src="${article.image || 'https://via.placeholder.com/800x450'}" alt="${article.title}" class="w-full h-full object-cover">
+                </div>
+                <div class="article-content p-6">
+                  <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                      <img src="${article.authorPhoto || 'https://via.placeholder.com/100x100'}" alt="${article.author}" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                      <p class="text-sm font-medium text-apple-darkgray dark:text-white">${article.author}</p>
+                      <p class="text-xs text-gray-600 dark:text-gray-300">${article.date}</p>
+                    </div>
+                  </div>
+                  <h3 class="text-lg font-bold heading-apple mb-3 text-apple-darkgray dark:text-white">${article.title}</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+                    ${article.excerpt}
+                  </p>
+                  <div class="mt-auto">
+                    <a href="${article.url || '#'}" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
+                      Read Article
+                      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          articlesContainer.innerHTML += articleHTML;
+        });
+        
+        // Reinisialisasi Swiper
+        if (typeof Swiper !== 'undefined') {
+          new Swiper('.article-carousel', {
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            pagination: {
+              el: '.article-carousel .swiper-pagination',
+              clickable: true,
+            },
+            breakpoints: {
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            },
+          });
+        }
+      }
+      
+      // Fungsi untuk memperbarui data timeline
+      function updateTimelineData(timelineData) {
+        const timelineContainer = document.querySelector('#timeline .space-y-6');
+        if (!timelineContainer) return;
+        
+        // Bersihkan konten yang ada
+        timelineContainer.innerHTML = '';
+        
+        // Tambahkan data timeline dari CMS
+        timelineData.forEach(event => {
+          const timelineHTML = `
+            <div class="timeline-node">
+              <div class="timeline-dot"></div>
+              <div class="apple-accordion bg-white/70 dark:bg-white/10 backdrop-blur-lg shadow-lg transition-apple fade-up border border-white/20">
+                <div class="apple-accordion-header flex justify-between items-center cursor-pointer">
+                  <div class="pl-4">
+                    <h3 class="text-lg font-bold heading-apple text-apple-darkgray dark:text-white">${event.title}</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">${event.date}</p>
+                  </div>
+                  <span class="accordion-icon pr-4">
+                    <div class="custom-accordion-arrow">
+                      <i class="fas fa-chevron-down text-sm"></i>
+                    </div>
+                  </span>
+                </div>
+                <div class="accordion-content px-4 text-gray-600 dark:text-gray-300">
+                  <p class="mb-4">${event.description}</p>
+                  <button class="px-6 py-2 bg-apple-blue text-white rounded-full btn-apple transition-apple">
+                    ${event.buttonText || 'Coming Soon'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+          timelineContainer.innerHTML += timelineHTML;
+        });
+        
+        // Reinisialisasi accordion functionality
+        const accordionHeaders = document.querySelectorAll('.apple-accordion-header');
+        accordionHeaders.forEach(header => {
+          header.addEventListener('click', function() {
+            const accordion = this.parentElement;
+            const wasActive = accordion.classList.contains('accordion-active');
+            
+            // Close all accordions first
+            document.querySelectorAll('.apple-accordion').forEach(acc => {
+              acc.classList.remove('accordion-active');
+            });
+            
+            // If it wasn't active before, activate it
+            if (!wasActive) {
+              accordion.classList.add('accordion-active');
+            }
+          });
+        });
+      }
+    </script>
+</body></html>
