@@ -1,11 +1,12 @@
 {
-  "name": "kkm-website-fix",
+  "name": "kkm-website",
   "version": "1.0.0",
+  "description": "Website Departemen Karir dan Karya Mahasiswa BEM KM UNY",
   "scripts": {
-    "build": "eleventy",
-    "start": "eleventy --serve"
+    "build": "node process-cms-data.js"
   },
-  "devDependencies": {
-    "@11ty/eleventy": "^2.0.0"
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
   }
 }
