@@ -1,0 +1,79 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Gambar yang diunggah akan disimpan di folder ini
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "team"
+    label: "Anggota Tim"
+    folder: "_data/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Nama", name: "name", widget: "string"}
+      - {label: "Jabatan", name: "position", widget: "string"}
+      - {label: "Foto", name: "photo", widget: "image"}
+      - {label: "Instagram", name: "instagram", widget: "string", required: false}
+      - {label: "Email", name: "email", widget: "string", required: false}
+      - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+      
+  - name: "programs"
+    label: "Program"
+    folder: "_data/programs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - {label: "Gambar", name: "image", widget: "image"}
+      - {label: "Status", name: "status", widget: "select", options: ["Coming Soon", "Aktif", "Selesai"]}
+
+  - name: "articles"
+    label: "Artikel"
+    folder: "_data/articles"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Penulis", name: "author", widget: "string"}
+      - {label: "Foto Penulis", name: "author_photo", widget: "image"}
+      - {label: "Tanggal Publikasi", name: "date", widget: "datetime"}
+      - {label: "Gambar Unggulan", name: "image", widget: "image"}
+      - {label: "Ringkasan", name: "summary", widget: "text"}
+      - {label: "Isi", name: "body", widget: "markdown"}
+
+  - name: "gallery"
+    label: "Galeri"
+    folder: "_data/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Tanggal", name: "date", widget: "datetime"}
+      - {label: "Gambar", name: "image", widget: "image"}
+
+  - name: "timeline"
+    label: "Timeline Acara"
+    folder: "_data/timeline"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Tanggal", name: "date", widget: "datetime"}
+      - {label: "Deskripsi", name: "description", widget: "text"}
+      - {label: "Status", name: "status", widget: "select", options: ["Coming Soon", "Aktif", "Selesai"]}
+      
+  - name: "settings"
+    label: "Pengaturan Situs"
+    files:
+      - label: "Informasi Kontak"
+        name: "contact"
+        file: "_data/contact.yml"
+        fields:
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Instagram", name: "instagram", widget: "string"}
+          - {label: "Alamat Kantor", name: "address", widget: "text"}
+          - {label: "URL Embed Google Maps", name: "map_url", widget: "string"}
