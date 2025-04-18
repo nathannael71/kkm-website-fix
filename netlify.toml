@@ -6,12 +6,3 @@
   from = "/admin/*"
   to = "/admin/:splat"
   status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-
-[build.environment]
-  NODE_VERSION = "16"
