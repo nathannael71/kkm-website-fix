@@ -1,0 +1,41 @@
+---
+layout: base
+permalink: "/articles/"
+---
+
+<div class="container mx-auto px-4 py-16">
+  <h1 class="text-3xl md:text-4xl font-bold heading-apple text-apple-darkgray dark:text-white mb-8 text-center">Articles</h1>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {% for article in articles %}
+    <a href="/articles/{{ article.slug }}" class="article-card bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg transition-apple border border-white/20 hover:shadow-xl transition-all duration-300">
+      <div class="article-img-container">
+        <img src="{{ article.image }}" alt="{{ article.title }}" class="w-full h-full object-cover">
+      </div>
+      <div class="article-content p-6">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+            <img src="{{ article.authorPhoto }}" alt="{{ article.author }}" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <p class="text-sm font-medium text-apple-darkgray dark:text-white">{{ article.author }}</p>
+            <p class="text-xs text-gray-600 dark:text-gray-300">{{ article.date }}</p>
+          </div>
+        </div>
+        <h3 class="text-lg font-bold heading-apple mb-3 text-apple-darkgray dark:text-white">{{ article.title }}</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+          {{ article.excerpt }}
+        </p>
+        <div class="mt-auto">
+          <span class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
+            Read Article
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
