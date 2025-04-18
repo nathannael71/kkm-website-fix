@@ -3,8 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <title>Netlify CMS</title>
-    <script src="https://unpkg.com/netlify-cms@^2.10.0/dist/netlify-cms.js"></script>
+    <script src="https://unpkg.com/netlify-cms@latest/dist/netlify-cms.js"></script>
   </head>
   <body>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+      window.addEventListener('DOMContentLoaded', () => {
+        const configURL = '/admin/config.yml';
+        fetch(configURL)
+          .then(res => {
+            if (!res.ok) throw new Error('Gagal load config.yml');
+            return res.text();
+          })
+          .then(configText => {
+            CMS.init({ config: configText });
+          })
+          .catch(err => {
+            document.body.innerHTML = '<h2>Gagal muat CMS: ' + err.message + '</h2>';
+            console.error(err);
+          });
+      });
+    </script>
   </body>
 </html>
