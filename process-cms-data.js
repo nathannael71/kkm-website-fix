@@ -1,159 +1,143 @@
 const fs = require('fs');
 const path = require('path');
-const glob = require('glob');
 
-// Buat folder _data jika belum ada
-const dataFolder = path.join(__dirname, '_data');
-if (!fs.existsSync(dataFolder)) {
-  fs.mkdirSync(dataFolder, { recursive: true });
+// Fungsi untuk memastikan direktori ada
+function ensureDirectoryExists(directory) {
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory, { recursive: true });
+    console.log(`Created directory: ${directory}`);
+  }
 }
 
-// Fungsi untuk memeriksa apakah file JSON valid
-function isValidJSON(filePath) {
+// Fungsi untuk memastikan file JSON ada
+function ensureJsonFileExists(filePath, defaultContent = {}) {
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(
+      filePath, 
+      JSON.stringify(defaultContent, null, 2)
+    );
+    console.log(`Created file: ${filePath}`);
+    return true;
+  }
+  return false;
+}
+
+// Fungsi untuk memastikan file JSON valid
+function validateJsonFile(filePath, defaultContent = {}) {
   try {
     const content = fs.readFileSync(filePath, 'utf8');
     JSON.parse(content);
     return true;
   } catch (error) {
-    console.error(`Error parsing JSON in ${filePath}:`, error.message);
+    console.error(`Invalid JSON in ${filePath}. Resetting to default.`);
+    fs.writeFileSync(
+      filePath, 
+      JSON.stringify(defaultContent, null, 2)
+    );
     return false;
   }
 }
 
-// Fungsi untuk memastikan semua file JSON ada
-function ensureAllDataFilesExist() {
-  // Daftar file data yang harus ada
-  const requiredFiles = [
-    'settings.json',
-    'ui.json',
-    'hero.json',
-    'about.json',
-    'programs-settings.json',
-    'team-settings.json',
-    'articles-settings.json',
-    'timeline-settings.json',
-    'gallery-settings.json',
-    'contact.json',
-    'location.json',
-    'footer.json',
-    'navigation.json'
-  ];
+// Pastikan semua folder yang diperlukan ada
+const dataDir = path.join(__dirname, '_data');
+const sectionsToEnsure = [
+  'team',
+  'programs',
+  'articles',
+  'timeline',
+  'gallery'
+];
 
-  // File koleksi yang mungkin berupa array
-  const collectionFiles = [
-    'team.json',
-    'programs.json',
-    'articles.json',
-    'timeline.json',
-    'gallery.json'
-  ];
+// Buat direktori data utama jika belum ada
+ensureDirectoryExists(dataDir);
 
-  // Buat file kosong jika belum ada
-  [...requiredFiles, ...collectionFiles].forEach(filename => {
-    const filePath = path.join(dataFolder, filename);
-    if (!fs.existsSync(filePath)) {
-      console.log(`Creating empty file: ${filename}`);
-      // Untuk file koleksi, buat array kosong
-      const isCollection = collectionFiles.includes(filename);
-      const initialContent = isCollection ? '[]' : '{}';
-      fs.writeFileSync(filePath, initialContent);
-    } else if (!isValidJSON(filePath)) {
-      // Jika file ada tapi JSON tidak valid, buat ulang
-      console.log(`Fixing invalid JSON in: ${filename}`);
-      const isCollection = collectionFiles.includes(filename);
-      const initialContent = isCollection ? '[]' : '{}';
-      fs.writeFileSync(filePath, initialContent);
+// Buat subdirektori untuk setiap bagian
+sectionsToEnsure.forEach(section => {
+  const sectionDir = path.join(dataDir, section);
+  ensureDirectoryExists(sectionDir);
+});
+
+// Daftar file JSON yang harus ada
+const requiredJsonFiles = [
+  { name: 'settings.json', defaultContent: {} },
+  { name: 'ui.json', defaultContent: {
+    colors: {
+      primary: "#0071e3",
+      secondary: "#86868b",
+      accent: "#F4A83A"
     }
-  });
-}
+  }},
+  { name: 'hero.json', defaultContent: {
+    title: "GROW YOUR SKILL WITH US",
+    subtitle: "Empowering students through career development and creative outlets"
+  }},
+  { name: 'about.json', defaultContent: {} },
+  { name: 'programs-settings.json', defaultContent: {} },
+  { name: 'team-settings.json', defaultContent: {} },
+  { name: 'articles-settings.json', defaultContent: {} },
+  { name: 'timeline-settings.json', defaultContent: {} },
+  { name: 'gallery-settings.json', defaultContent: {} },
+  { name: 'contact.json', defaultContent: {} },
+  { name: 'location.json', defaultContent: {} },
+  { name: 'footer.json', defaultContent: {} },
+  { name: 'navigation.json', defaultContent: {
+    menu: [
+      { label: "Home", url: "#home", icon: "fa-home" },
+      { label: "About", url: "#about", icon: "fa-info-circle" },
+      { label: "Programs", url: "#programs", icon: "fa-box" },
+      { label: "Team", url: "#team", icon: "fa-users" },
+      { label: "Gallery", url: "#gallery", icon: "fa-images" },
+      { label: "Contact", url: "#contact", icon: "fa-envelope" }
+    ]
+  }}
+];
 
-// Fungsi untuk memproses semua file dari admin/collections ke _data
-function processCollectionData() {
-  // Pola untuk semua file JSON di bawah folder admin/collections
-  const pattern = path.join(__dirname, 'admin', 'collections', '**', '*.json');
+// Daftar file koleksi yang harus dikonversi dari folder ke file array
+const collectionJsonFiles = [
+  { name: 'team.json', folder: 'team', defaultContent: [] },
+  { name: 'programs.json', folder: 'programs', defaultContent: [] },
+  { name: 'articles.json', folder: 'articles', defaultContent: [] },
+  { name: 'timeline.json', folder: 'timeline', defaultContent: [] },
+  { name: 'gallery.json', folder: 'gallery', defaultContent: [] }
+];
+
+// Membuat atau memastikan file JSON yang diperlukan ada
+requiredJsonFiles.forEach(file => {
+  const filePath = path.join(dataDir, file.name);
+  const created = ensureJsonFileExists(filePath, file.defaultContent);
+  if (!created) {
+    validateJsonFile(filePath, file.defaultContent);
+  }
+});
+
+// Mengumpulkan file dari folder koleksi ke file array tunggal
+collectionJsonFiles.forEach(collection => {
+  const outputFilePath = path.join(dataDir, collection.name);
+  let allItems = [];
   
-  // Gunakan glob untuk menemukan semua file
-  glob.sync(pattern).forEach(filePath => {
-    try {
-      // Baca file
-      const content = fs.readFileSync(filePath, 'utf8');
-      const data = JSON.parse(content);
-      
-      // Ambil nama koleksi dari path
-      const pathParts = filePath.split(path.sep);
-      const collectionName = pathParts[pathParts.length - 2]; // ambil nama folder parent
-      const targetFile = path.join(dataFolder, `${collectionName}.json`);
-      
-      // Jika file target sudah ada, baca dan update
-      let targetData = [];
-      if (fs.existsSync(targetFile)) {
+  // Periksa apakah folder koleksi ada
+  const collectionDir = path.join(dataDir, collection.folder);
+  if (fs.existsSync(collectionDir)) {
+    // Baca semua file JSON dari folder koleksi
+    const files = fs.readdirSync(collectionDir);
+    
+    files.forEach(file => {
+      if (file.endsWith('.json')) {
         try {
-          const targetContent = fs.readFileSync(targetFile, 'utf8');
-          targetData = JSON.parse(targetContent);
+          const filePath = path.join(collectionDir, file);
+          const content = fs.readFileSync(filePath, 'utf8');
+          const item = JSON.parse(content);
+          allItems.push(item);
         } catch (error) {
-          console.error(`Error reading target file ${targetFile}:`, error.message);
-          // Jika error parsing, mulai dengan array kosong
-          targetData = [];
+          console.error(`Error reading ${file}: ${error.message}`);
         }
       }
-      
-      // Untuk koleksi, tambahkan atau update data
-      const slugField = data.slug || data.id || data.name;
-      if (slugField) {
-        // Cari apakah item dengan slug yang sama sudah ada
-        const existingIndex = targetData.findIndex(item => 
-          (item.slug === slugField) || 
-          (item.id === slugField) || 
-          (item.name === slugField)
-        );
-        
-        if (existingIndex >= 0) {
-          // Update item yang ada
-          targetData[existingIndex] = data;
-        } else {
-          // Tambahkan item baru
-          targetData.push(data);
-        }
-      } else {
-        // Jika tidak ada slug, tambahkan sebagai item baru
-        targetData.push(data);
-      }
-      
-      // Tulis kembali file
-      fs.writeFileSync(targetFile, JSON.stringify(targetData, null, 2));
-      console.log(`Updated collection data: ${collectionName}`);
-    } catch (error) {
-      console.error(`Error processing file ${filePath}:`, error.message);
-    }
-  });
-}
-
-// Fungsi untuk memastikan semua data valid
-function validateData() {
-  // Pola untuk semua file JSON di _data
-  const pattern = path.join(dataFolder, '*.json');
+    });
+  }
   
-  // Validasi semua file
-  glob.sync(pattern).forEach(filePath => {
-    try {
-      // Coba parse JSON
-      const content = fs.readFileSync(filePath, 'utf8');
-      JSON.parse(content);
-      console.log(`Validated: ${path.basename(filePath)}`);
-    } catch (error) {
-      console.error(`Invalid JSON in ${filePath}:`, error.message);
-      // Tulis ulang dengan JSON kosong yang sesuai
-      const isCollection = path.basename(filePath).match(/^(team|programs|articles|timeline|gallery)\.json$/);
-      const initialContent = isCollection ? '[]' : '{}';
-      fs.writeFileSync(filePath, initialContent);
-      console.log(`Fixed: ${path.basename(filePath)}`);
-    }
-  });
-}
+  // Tulis semua item ke file output
+  fs.writeFileSync(outputFilePath, JSON.stringify(allItems, null, 2));
+  console.log(`Processed ${collection.name} with ${allItems.length} items`);
+});
 
-// Jalankan semua fungsi
-console.log('Starting CMS data processing...');
-ensureAllDataFilesExist();
-processCollectionData();
-validateData();
-console.log('CMS data processing completed.');
+console.log('All required data files are ready');
