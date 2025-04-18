@@ -1,11 +1,14 @@
 {
-    "title": "Cara Membangun Portfolio Profesional",
-    "author": "Budi Santoso",
-    "authorPhoto": "/images/uploads/profile-budi.jpg",
-    "date": "June 15, 2024",
-    "image": "/images/uploads/portfolio-article.jpg",
-    "excerpt": "Tips dan strategi untuk membangun portfolio profesional yang menarik bagi calon pemberi kerja.",
-    "content": "# Cara Membangun Portfolio Profesional\n\nMemiliki portfolio yang baik sangat penting dalam dunia profesional. Portfolio adalah cara untuk menunjukkan kemampuan dan pengalaman Anda kepada calon pemberi kerja atau klien.\n\n## Tips Membangun Portfolio\n\n1. **Pilih karya terbaik Anda** - Kualitas lebih penting daripada kuantitas\n2. **Ceritakan proses kerja Anda** - Jelaskan bagaimana Anda menyelesaikan proyek\n3. **Update secara berkala** - Tambahkan proyek baru dan hapus yang lama\n4. **Perhatikan desain** - Portfolio Anda harus menarik secara visual\n\n## Apa yang Harus Dimasukkan\n\n- Proyek-proyek terbaik Anda\n- Testimonial dari klien atau atasan\n- Deskripsi singkat tentang diri Anda\n- Informasi kontak\n\nDengan memiliki portfolio yang baik, Anda akan lebih mudah mendapatkan pekerjaan atau proyek yang Anda inginkan.",
-    "slug": "cara-membangun-portfolio-profesional",
-    "order": 1
-  }
+  "items": [
+    {
+      "title": "Contoh Artikel",
+      "excerpt": "Deskripsi singkat",
+      "author": "Admin",
+      "authorPhoto": "/images/uploads/author.jpg",
+      "date": "2024-03-01T00:00:00.000Z",
+      "image": "/images/uploads/cover.jpg",
+      "content": "Isi artikel...",
+      "slug": "contoh-artikel"
+    }
+  ]
+}
