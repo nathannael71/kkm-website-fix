@@ -1,10 +1,10 @@
 [build]
-  publish = "/"
-  command = "npm run build"
+  publish = "_site"
+  command = "eleventy"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/admin/*"
+  to = "/admin/:splat"
   status = 200
 
 [[headers]]
@@ -15,12 +15,3 @@
 
 [build.environment]
   NODE_VERSION = "16"
-  
-[build]
-  publish = "_site"
-  command = "eleventy"
-
-[[redirects]]
-  from = "/admin/*"
-  to = "/admin/:splat"
-  status = 200
