@@ -8,5 +8,6 @@
   "dependencies": {
     "fs": "0.0.1-security",
     "path": "^0.12.7"
+    "@11ty/eleventy": "^2.0.1"
   }
 }
