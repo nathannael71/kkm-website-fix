@@ -28,3 +28,14 @@ eleventyConfig.addGlobalData("gallery", async () => {
   const gallery = await getCollectionData('gallery');
   return gallery.sort((a, b) => a.order - b.order);
 });
+// Tambahkan konfigurasi untuk halaman artikel
+eleventyConfig.addGlobalData("articles", async () => {
+  const articles = await getCollectionData('articles');
+  return articles.sort((a, b) => a.order - b.order);
+});
+
+// Tambahkan filter markdown jika belum ada
+eleventyConfig.addFilter("markdown", function(content) {
+  const md = new markdownIt();
+  return md.render(content);
+});
