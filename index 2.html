@@ -620,6 +620,49 @@
         }
     </style>
 </head>
+<!-- Script untuk Netlify Identity -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+
+<!-- Script untuk mengambil data dari CMS -->
+<script>
+  // Fungsi untuk mengambil data dari file JSON yang dibuat oleh CMS
+  async function fetchData(collection) {
+    try {
+      const response = await fetch(`/_data/${collection}.json`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error(`Couldn't fetch ${collection} data:`, error);
+      return [];
+    }
+  }
+
+  // Panggil fungsi saat dokumen dimuat
+  document.addEventListener('DOMContentLoaded', async () => {
+    // Contoh: Memuat data tim
+    const teamData = await fetchData('team');
+    // TODO: Tampilkan data tim di UI
+    
+    // Contoh: Memuat data program
+    const programsData = await fetchData('programs');
+    // TODO: Tampilkan data program di UI
+    
+    // Dan seterusnya untuk koleksi lainnya
+  });
+</script>
 <body class="bg-white dark:bg-apple-darkgray text-apple-darkgray dark:text-white transition-colors duration-500 overflow-x-hidden">
     <!-- Scroll to top button -->
     <button id="scroll-to-top" class="fixed bottom-8 right-8 z-50 bg-apple-blue text-white p-3 rounded-full shadow-lg transition-apple opacity-0 pointer-events-none w-12 h-12 flex items-center justify-center">
