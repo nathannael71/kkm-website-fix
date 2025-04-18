@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://qph.cf2.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://www.google.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karir dan Karya Mahasiswa | BEM KM UNY</title>
@@ -70,20 +69,21 @@
         
         /* Container with proper spacing */
         .main-container {
-            width: 70%;
+            width: 85%;
             margin-left: auto;
             margin-right: auto;
+            max-width: 1200px;
         }
         
         @media (max-width: 1280px) {
             .main-container {
-                width: 85%;
+                width: 90%;
             }
         }
         
         @media (max-width: 768px) {
             .main-container {
-                width: 90%;
+                width: 92%;
             }
         }
         
@@ -341,18 +341,32 @@
             background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.2));
         }
         
-        /* Team carousel */
+        /* Team carousel - UPDATED for better sizing & centering */
+        .carousel-container {
+            position: relative;
+            width: 95%;
+            max-width: 1100px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
         .team-carousel .swiper-slide {
             width: 280px;
             margin-right: 20px;
             height: auto;
         }
         
-        /* Album carousel - Enhanced for larger centered images */
+        /* Album carousel - Enhanced for larger centered images - UPDATED */
+        .album-carousel-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
         .album-carousel .swiper-slide {
-            width: 60%;  /* Made narrower for better side-edge visibility */
-            opacity: 0.3; /* More contrast between active/inactive */
-            transform: scale(0.8);
+            width: 75%; /* Increased size for larger images */
+            opacity: 0.3;
+            transform: scale(0.85);
             transition: all 0.6s ease;
         }
         
@@ -367,7 +381,13 @@
             border-radius: 20px;
         }
         
-        /* Articles carousel */
+        /* Articles carousel - UPDATED for better sizing & centering */
+        .article-carousel-container {
+            width: 95%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
         .article-carousel .swiper-slide {
             width: 320px;
             margin-right: 20px;
@@ -565,7 +585,7 @@
                 width: 75%;
             }
             
-            /* Smaller fonts for mobile - NEW ADDITIONS */
+            /* Smaller fonts for mobile */
             h1, .text-4xl, .text-5xl, .text-6xl, .text-7xl {
                 font-size: 28px !important;
                 line-height: 1.2 !important;
@@ -612,8 +632,8 @@
             
             /* Adjust container paddings for better mobile spacing */
             .container, .main-container {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
             }
             
             /* Make form inputs more mobile-friendly */
@@ -674,6 +694,50 @@
         .accordion-active .custom-accordion-arrow {
             transform: rotate(180deg);
             background-color: rgba(0, 113, 227, 0.2);
+        }
+        
+        /* Footer styles - UPDATED */
+        footer {
+            font-size: 14px;
+        }
+        
+        footer h3, footer h4 {
+            font-size: 16px;
+        }
+        
+        footer .text-xl {
+            font-size: 16px !important;
+        }
+        
+        footer .text-lg {
+            font-size: 15px !important; 
+        }
+        
+        footer p, footer a, footer li {
+            font-size: 13px !important;
+        }
+        
+        footer .text-sm {
+            font-size: 12px !important;
+        }
+        
+        footer .text-xs {
+            font-size: 11px !important;
+        }
+        
+        /* Map container styles - UPDATED */
+        .map-container {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 450px;
+            position: relative;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
     </style>
 </head>
@@ -986,7 +1050,7 @@
             </div>
         </section>
 
-        <!-- Team section with 6 members -->
+        <!-- Team section with 6 members - UPDATED for better centering -->
         <section id="team" class="py-16 section-gradient-3 gradient-section overflow-hidden">
             <div class="main-container">
                 <div class="text-center mb-16">
@@ -997,8 +1061,8 @@
                     </p>
                 </div>
                 
-                <!-- Team carousel -->
-                <div class="team-carousel-container relative overflow-hidden fade-up">
+                <!-- Team carousel - UPDATED container -->
+                <div class="carousel-container fade-up">
                     <div class="swiper team-carousel">
                         <div class="swiper-wrapper pb-10">
                             <!-- Team member 1 -->
@@ -1171,7 +1235,7 @@
             </div>
         </section>
 
-        <!-- Articles section -->
+        <!-- Articles section - UPDATED for better centering -->
         <section id="articles" class="py-16 section-gradient-4 gradient-section">
             <div class="main-container">
                 <div class="text-center mb-16">
@@ -1182,8 +1246,8 @@
                     </p>
                 </div>
                 
-                <!-- Articles carousel -->
-                <div class="article-carousel-container relative overflow-hidden fade-up">
+                <!-- Articles carousel - UPDATED container -->
+                <div class="article-carousel-container fade-up">
                     <div class="swiper article-carousel">
                         <div class="swiper-wrapper pb-10">
                             <!-- Article 1 -->
@@ -1207,7 +1271,7 @@
                                             Learn effective strategies for building a professional network that will serve you well after graduation.
                                         </p>
                                         <div class="mt-auto">
-                                            <a href="#" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
+                                            <a href="/articles/how-to-build-network" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
                                                 Read Article
                                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -1239,7 +1303,7 @@
                                             Discover the most in-demand skills in today's job market and how you can develop them.
                                         </p>
                                         <div class="mt-auto">
-                                            <a href="#" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
+                                            <a href="/articles/top-skills-employers" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
                                                 Read Article
                                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -1271,7 +1335,7 @@
                                             Practical tips for managing your coursework while also building your professional skills and experience.
                                         </p>
                                         <div class="mt-auto">
-                                            <a href="#" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
+                                            <a href="/articles/balancing-academics-career" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
                                                 Read Article
                                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -1303,7 +1367,7 @@
                                             How to make the most of your involvement in student organizations to enhance your professional development.
                                         </p>
                                         <div class="mt-auto">
-                                            <a href="#" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
+                                            <a href="/articles/leveraging-student-organizations" class="text-blue-500 dark:text-blue-300 font-medium inline-flex items-center">
                                                 Read Article
                                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -1322,7 +1386,7 @@
                 
                 <!-- View all articles button -->
                 <div class="text-center mt-10">
-                    <a href="#" class="inline-flex items-center px-6 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white rounded-full shadow-lg transition-apple hover:bg-white/30 dark:hover:bg-white/20 border border-white/20">
+                    <a href="/articles" class="inline-flex items-center px-6 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white rounded-full shadow-lg transition-apple hover:bg-white/30 dark:hover:bg-white/20 border border-white/20">
                         View All Articles
                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -1470,7 +1534,7 @@
             </div>
         </section>
 
-        <!-- Gallery section -->
+        <!-- Gallery section - UPDATED for larger images -->
         <section id="gallery" class="py-16 section-gradient-1 gradient-section overflow-hidden">
             <div class="main-container">
                 <div class="text-center mb-16">
@@ -1481,8 +1545,8 @@
                     </p>
                 </div>
                 
-                <!-- Album carousel - Fixed for centered active slide -->
-                <div class="album-carousel-container relative overflow-hidden fade-up">
+                <!-- Album carousel - UPDATED for larger images -->
+                <div class="album-carousel-container fade-up">
                     <div class="swiper album-carousel">
                         <div class="swiper-wrapper pb-10">
                             <!-- Gallery item 1 -->
@@ -1571,9 +1635,9 @@
                 
                 <!-- View all button -->
                 <div class="text-center mt-12">
-                    <button class="px-8 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white rounded-full transition-apple hover:bg-white/30 dark:hover:bg-white/20 border border-white/20 fade-up">
+                    <a href="/gallery" class="px-8 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white rounded-full transition-apple hover:bg-white/30 dark:hover:bg-white/20 border border-white/20 fade-up">
                         View Full Gallery
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1637,7 +1701,7 @@
                         <div class="bg-white/70 dark:bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-lg transition-apple border border-white/20">
                             <h3 class="text-2xl font-bold heading-apple mb-6 text-apple-darkgray dark:text-white">Send a Message</h3>
                             
-                            <form id="contact-form" class="space-y-6" action="https://formspree.io/f/kkmbemuny@gmail.com" method="POST">
+                            <form id="contact-form" class="space-y-6" action="https://formspree.io/f/mvojrgdp" method="POST">
                                 <div>
                                     <label for="name" class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Name</label>
                                     <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 text-base" required="">
@@ -1678,7 +1742,7 @@
             </div>
         </section>
 
-        <!-- Location section -->
+        <!-- Location section - UPDATED for working Google Maps -->
         <section id="location" class="py-16 section-gradient-3 gradient-section">
             <div class="main-container">
                 <div class="text-center mb-16">
@@ -1689,11 +1753,10 @@
                     </p>
                 </div>
                 
+                <!-- Map container - UPDATED for working embed -->
                 <div class="rounded-2xl overflow-hidden shadow-lg transition-apple fade-up">
-                    <!-- Google Maps embed -->
-                    <div class="relative aspect-video">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.1633170025876!2d110.3866113!3d-7.7735978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59b2d7b98905%3A0x19ad4f9a195770c7!2sUniversitas%20Negeri%20Yogyakarta!5e0!3m2!1sen!2sid!4v1656483265685!5m2!1sen!2sid" class="absolute inset-0 w-full h-full border-0" style="filter: grayscale(0.5);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.1633170025876!2d110.38421261477832!3d-7.773598894403988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59b2d7b98905%3A0x19ad4f9a195770c7!2sUniversitas%20Negeri%20Yogyakarta!5e0!3m2!1sen!2sid!4v1656483265685!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     
                     <!-- Map info overlay -->
@@ -1704,12 +1767,12 @@
                                 <p class="text-gray-600 dark:text-gray-300">Universitas Negeri Yogyakarta, Karangmalang, Yogyakarta</p>
                             </div>
                             <div class="flex space-x-4">
-                                <button class="px-4 py-2 bg-white/20 dark:bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white rounded-lg transition-apple hover:bg-white/30 dark:hover:bg-white/20 border border-white/20">
+                                <button onclick="navigator.share({title: 'Lokasi BEM KM UNY', url: 'https://goo.gl/maps/8XYZabcdefg'})" class="px-4 py-2 bg-white/20 dark:bg-white/10 backdrop-blur-lg text-apple-darkgray dark:text-white rounded-lg transition-apple hover:bg-white/30 dark:hover:bg-white/20 border border-white/20">
                                     <i class="fas fa-share-alt mr-2"></i> Share
                                 </button>
-                                <button class="px-4 py-2 bg-apple-blue text-white rounded-lg transition-apple hover:bg-blue-600">
+                                <a href="https://www.google.com/maps/dir//Universitas+Negeri+Yogyakarta/" target="_blank" class="px-4 py-2 bg-apple-blue text-white rounded-lg transition-apple hover:bg-blue-600">
                                     <i class="fas fa-directions mr-2"></i> Directions
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -1721,15 +1784,15 @@
                     <p class="text-gray-600 dark:text-gray-300 text-xl max-w-3xl mx-auto mb-10">
                         Join us at Karir dan Karya Mahasiswa to enhance your skills, showcase your talent, and prepare for your future career.
                     </p>
-                    <button class="px-8 py-4 bg-apple-blue text-white rounded-full btn-apple transition-apple text-lg font-medium">
+                    <a href="/join" class="px-8 py-4 bg-apple-blue text-white rounded-full btn-apple transition-apple text-lg font-medium">
                         Join Our Community
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer - UPDATED with smaller fonts -->
     <footer class="py-12 bg-black text-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -1746,7 +1809,7 @@
                                 <span class="text-xs font-bold">BEM</span>
                             </div>
                         </div>
-                        <h3 class="text-xl font-bold heading-apple">KARIR DAN KARYA MAHASISWA</h3>
+                        <h3 class="text-lg font-bold heading-apple">KARIR DAN KARYA MAHASISWA</h3>
                     </div>
                     <p class="text-gray-400 mb-6">
                         Dedicated to helping students at Universitas Negeri Yogyakarta develop their skills, showcase their talent, and prepare for their future careers.
@@ -1769,8 +1832,8 @@
                 
                 <!-- Quick links -->
                 <div>
-                    <h4 class="text-lg font-bold heading-apple mb-6">Quick Links</h4>
-                    <ul class="space-y-4">
+                    <h4 class="text-base font-bold heading-apple mb-5">Quick Links</h4>
+                    <ul class="space-y-3">
                         <li><a href="#home" class="text-gray-400 hover:text-white transition-apple">Home</a></li>
                         <li><a href="#about" class="text-gray-400 hover:text-white transition-apple">About Us</a></li>
                         <li><a href="#programs" class="text-gray-400 hover:text-white transition-apple">Programs</a></li>
@@ -1783,8 +1846,8 @@
                 
                 <!-- Contact info -->
                 <div>
-                    <h4 class="text-lg font-bold heading-apple mb-6">Contact Info</h4>
-                    <ul class="space-y-4">
+                    <h4 class="text-base font-bold heading-apple mb-5">Contact Info</h4>
+                    <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-apple-blue mt-1 mr-3"></i>
                             <span class="text-gray-400">Student Center Building, Universitas Negeri Yogyakarta, Karangmalang, Yogyakarta</span>
@@ -1808,8 +1871,8 @@
                     © 2025 Karir dan Karya Mahasiswa BEM KM UNY. All rights reserved.
                 </p>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-apple">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-apple">Terms of Service</a>
+                    <a href="/privacy" class="text-gray-400 hover:text-white text-sm transition-apple">Privacy Policy</a>
+                    <a href="/terms" class="text-gray-400 hover:text-white text-sm transition-apple">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -1917,15 +1980,16 @@
                 });
             });
             
-            // Contact form submission
+            // Contact form submission - UPDATED with working formspree ID
             const contactForm = document.getElementById('contact-form');
             const successMessage = document.getElementById('success-message');
             
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
+                    // Form will submit to Formspree - we allow this to happen naturally
+                    // But add some additional UX
                     
-                    // Validate form
+                    // Validate form first
                     let valid = true;
                     const inputs = contactForm.querySelectorAll('input, textarea');
                     inputs.forEach(input => {
@@ -1937,34 +2001,13 @@
                         }
                     });
                     
-                    if (valid) {
-                        // Get form data
-                        const formData = new FormData(contactForm);
-                        
-                        // Send email using EmailJS or other service
-                        fetch('https://formspree.io/f/kkmbemuny@gmail.com', {
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'Accept': 'application/json'
-                            }
-                        })
-                        .then(response => {
-                            if (response.ok) {
-                                contactForm.reset();
-                                successMessage.classList.remove('hidden');
-                                
-                                // Hide success message after 5 seconds
-                                setTimeout(() => {
-                                    successMessage.classList.add('hidden');
-                                }, 5000);
-                            } else {
-                                throw new Error('Network response was not ok');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
+                    if (!valid) {
+                        e.preventDefault(); // Prevent form submission if invalid
+                    } else {
+                        // If valid, we'll show a temporary "sending" state
+                        const submitButton = contactForm.querySelector('button[type="submit"]');
+                        submitButton.innerHTML = 'Sending...';
+                        submitButton.disabled = true;
                     }
                 });
             }
@@ -2028,14 +2071,16 @@
                 startSlideshow();
             }
             
-            // Initialize Swiper carousels
+            // Initialize Swiper carousels - UPDATED for better sizing & centering
             if (typeof Swiper !== 'undefined') {
-                // Team carousel
+                // Team carousel - UPDATED
                 const teamCarouselElement = document.querySelector('.team-carousel');
                 if (teamCarouselElement) {
                     const teamCarousel = new Swiper('.team-carousel', {
                         slidesPerView: 'auto',
                         spaceBetween: 20,
+                        centeredSlides: false,
+                        loop: false,
                         pagination: {
                             el: '.team-carousel .swiper-pagination',
                             clickable: true,
@@ -2043,42 +2088,52 @@
                         breakpoints: {
                             640: {
                                 slidesPerView: 2,
+                                centeredSlides: false,
                             },
                             768: {
                                 slidesPerView: 3,
+                                centeredSlides: false,
                             },
                             1024: {
                                 slidesPerView: 4,
+                                centeredSlides: false,
                             },
                         },
                     });
                 }
                 
-                // Album carousel - Fixed for centered images - Improved
+                // Album carousel - UPDATED for larger centered images
                 const albumCarouselElement = document.querySelector('.album-carousel');
                 if (albumCarouselElement) {
                     const albumCarousel = new Swiper('.album-carousel', {
-                        slidesPerView: 'auto',
-                        centeredSlides: true,
+                        slidesPerView: 1,
                         spaceBetween: 30,
+                        centeredSlides: true,
                         loop: true,
                         loopedSlides: 3,
-                        speed: 800, // Smoother transition
+                        speed: 800,
                         effect: 'slide',
                         grabCursor: true,
                         pagination: {
                             el: '.album-carousel .swiper-pagination',
                             clickable: true,
                         },
+                        breakpoints: {
+                            640: {
+                                slidesPerView: 'auto',
+                            },
+                        },
                     });
                 }
                 
-                // Articles carousel
+                // Articles carousel - UPDATED
                 const articleCarouselElement = document.querySelector('.article-carousel');
                 if (articleCarouselElement) {
                     const articleCarousel = new Swiper('.article-carousel', {
                         slidesPerView: 'auto',
                         spaceBetween: 20,
+                        centeredSlides: false,
+                        loop: false,
                         pagination: {
                             el: '.article-carousel .swiper-pagination',
                             clickable: true,
@@ -2086,9 +2141,11 @@
                         breakpoints: {
                             640: {
                                 slidesPerView: 2,
+                                centeredSlides: false,
                             },
                             1024: {
                                 slidesPerView: 3,
+                                centeredSlides: false,
                             },
                         },
                     });
@@ -2154,6 +2211,15 @@
                     header.classList.remove('dark');
                     header.classList.add('light');
                 }
+            }
+            
+            // Formspree handling - Added to show success message after form submission
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') && contactForm) {
+                successMessage.classList.remove('hidden');
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 5000);
             }
             
             // Initialize GSAP animations if available
