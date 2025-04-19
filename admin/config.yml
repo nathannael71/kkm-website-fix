@@ -1,39 +1,18 @@
 backend:
   name: git-gateway
   branch: main
+  repo: nathannael71/kkm-website-fix  # Ganti dengan nama repo GitHub Anda
   commit_messages:
     create: "Create {{collection}} '{{slug}}'"
     update: "Update {{collection}} '{{slug}}'"
     delete: "Delete {{collection}} '{{slug}}'"
-    
-# Tambahkan ini untuk menangani editorial workflow dengan lebih baik
-  repo: nathannael71/kkm-website-fix  # Ganti dengan nama repo GitHub Anda
 
-# Tentukan folder untuk draft dalam editorial workflow
-local_backend:
-  url: http://localhost:8081/api/v1
-
-# Auto-refresh website setelah update
-display_url: "https://kkmbemuny.netlify.app"
-
-# Perbaikan untuk editorial workflow
-publish_mode: editorial_workflow
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
-
-# Auto-refresh website setelah update
-display_url: "https://kkmbemuny.netlify.app"
-
-# Perbaikan untuk editorial workflow
-publish_mode: editorial_workflow
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
-# Auto-refresh website setelah update
-display_url: "https://kkmbemuny.netlify.app"
-preview_output: "_site"
+local_backend: true
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
+
+display_url: "https://kkmbemuny.netlify.app"
 publish_mode: editorial_workflow
 
 collections:
