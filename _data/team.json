@@ -1,32 +1,11 @@
 {
   "items": [
     {
-      "name": "John Doe",
-      "position": "Ketua BEM",
-      "photo": "/images/uploads/team1.jpg",
-      "instagram": "@johndoe",
-      "email": "john@bemuny.ac.id",
-      "linkedin": "linkedin.com/in/johndoe",
-      "order": 1
-    },
-    {
-      "order": 1,
-      "name": "Nathan Ganteng",
-      "position": "Bos Besar",
+      "name": "Nathan",
+      "position": "Orang Ganteng",
       "photo": "/images/uploads/img_8960.jpeg",
-      "instagram": "nathanrrl"
-    }
-  ]
-}
-{
-  "items": [
-    {
-      "name": "Nathanael",
-      "position": "Ketua Umum",
-      "photo": "/images/uploads/team/nathanael.jpg",
-      "instagram": "nathanael71",
-      "email": "nathanael@bemuny.ac.id",
-      "linkedin": "https://linkedin.com/in/nathanael",
+      "instagram": "nathanrrl",
+      "email": "",
       "order": 1
     }
   ]
