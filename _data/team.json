@@ -18,3 +18,16 @@
     }
   ]
 }
+{
+  "items": [
+    {
+      "name": "Nathanael",
+      "position": "Ketua Umum",
+      "photo": "/images/uploads/team/nathanael.jpg",
+      "instagram": "nathanael71",
+      "email": "nathanael@bemuny.ac.id",
+      "linkedin": "https://linkedin.com/in/nathanael",
+      "order": 1
+    }
+  ]
+}
