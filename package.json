@@ -5,14 +5,13 @@
   "scripts": {
     "prebuild": "node process-cms-data.js",
     "build": "npx eleventy",
-    "start": "npx eleventy --serve",
-    "cms-refresh": "echo 'Trigger CMS update'"
+    "start": "npx eleventy --serve"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
-    "luxon": "^3.4.4"
+    "@11ty/eleventy": "2.0.1",
+    "luxon": "3.4.4"
   }
 }
