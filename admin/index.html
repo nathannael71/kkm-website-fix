@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin KKM BEM UNY</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    /* Optimasi Tampilan Mobile */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 15px;
+      line-height: 1.5;
+    }
+    .nc-controlPane-wrapper {
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .nc-github-button {
+      padding: 10px 15px;
+      font-size: 16px;
+    }
+    .nc-entryListing-list {
+      grid-gap: 10px;
+    }
+    @media (max-width: 768px) {
+      .nc-controlPane-root {
+        width: 100% !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script>
+    // Auto-refresh untuk update instan
+    if (window.location.hostname === 'kkmbemuny.netlify.app') {
+      const socket = new WebSocket('wss://ws.netlify.com/live-updates');
+      socket.onmessage = () => {
+        console.log('Update diterima, me-refresh halaman...');
+        window.location.reload();
+      };
+    }
+  </script>
 </body>
 </html>
