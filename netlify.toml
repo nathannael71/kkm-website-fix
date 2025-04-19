@@ -1,8 +1,26 @@
 [build]
-  publish = "_site"
-  command = "npx eleventy"
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+[build.environment]
+  NODE_VERSION = "16"
+  NPM_VERSION = "8"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Cache-Control = "no-cache, no-store, must-revalidate"
 
 [[redirects]]
   from = "/admin/*"
-  to = "/admin/:splat"
+  to = "/admin/index.html"
   status = 200
+
+[context.production.environment]
+  NETLIFY_IMPRESS_OPT = "true"  # Aktifkan instant updates
