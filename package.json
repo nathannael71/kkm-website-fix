@@ -1,3 +1,4 @@
+}
 {
   "name": "kkm-website",
   "version": "1.0.0",
@@ -5,7 +6,8 @@
   "scripts": {
     "prebuild": "node process-cms-data.js",
     "build": "npx eleventy",
-    "start": "npx eleventy --serve"
+    "start": "npx eleventy --serve",
+    "cms-refresh": "echo 'Trigger CMS update'"
   },
   "keywords": [],
   "author": "",
