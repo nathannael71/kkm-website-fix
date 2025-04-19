@@ -1,0 +1,9 @@
+{
+  "logo": "/images/uploads/logo-kkm.png",
+  "items": [
+    {"label": "Beranda", "url": "/"},
+    {"label": "Tentang", "url": "/tentang"},
+    {"label": "Program", "url": "/program"},
+    {"label": "Kontak", "url": "/kontak"}
+  ]
+}
