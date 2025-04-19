@@ -20,6 +20,7 @@ collections:
     label: "Header Website"
     files:
       - file: "_data/header.json"
+        name: "header_settings" # Properti name ditambahkan
         label: "Pengaturan Header"
         fields:
           - {label: "Logo Website", name: "logo", widget: "image"}
@@ -35,6 +36,7 @@ collections:
     label: "Hero Section"
     files:
       - file: "_data/hero.json"
+        name: "hero_settings" # Properti name ditambahkan
         label: "Hero Banner"
         fields:
           - {label: "Gambar Background", name: "image", widget: "image"}
@@ -48,6 +50,7 @@ collections:
     label: "Tentang Kami"
     files:
       - file: "_data/about.json"
+        name: "about_content" # Properti name ditambahkan
         label: "Konten Tentang Kami"
         fields:
           - {label: "Judul", name: "title", widget: "string"}
@@ -59,6 +62,7 @@ collections:
     label: "Program"
     files:
       - file: "_data/programs.json"
+        name: "program_list" # Properti name ditambahkan
         label: "Daftar Program"
         fields:
           - label: "Daftar Program"
@@ -76,6 +80,7 @@ collections:
     label: "Tim Pengurus"
     files:
       - file: "_data/team.json"
+        name: "team_members" # Properti name ditambahkan
         label: "Anggota Tim"
         fields:
           - label: "Daftar Anggota"
@@ -95,6 +100,7 @@ collections:
     label: "Artikel"
     files:
       - file: "_data/articles.json"
+        name: "article_list" # Properti name ditambahkan
         label: "Daftar Artikel"
         fields:
           - label: "Artikel"
@@ -115,6 +121,7 @@ collections:
     label: "Timeline"
     files:
       - file: "_data/timeline.json"
+        name: "timeline_events" # Properti name ditambahkan
         label: "Jadwal Kegiatan"
         fields:
           - label: "Kegiatan"
@@ -132,6 +139,7 @@ collections:
     label: "Galeri"
     files:
       - file: "_data/gallery.json"
+        name: "gallery_photos" # Properti name ditambahkan
         label: "Daftar Foto"
         fields:
           - label: "Foto"
@@ -147,6 +155,7 @@ collections:
     label: "Kontak"
     files:
       - file: "_data/contact.json"
+        name: "contact_info" # Properti name ditambahkan
         label: "Informasi Kontak"
         fields:
           - {label: "Email", name: "email", widget: "string"}
@@ -159,6 +168,7 @@ collections:
     label: "Footer"
     files:
       - file: "_data/footer.json"
+        name: "footer_settings" # Properti name ditambahkan
         label: "Pengaturan Footer"
         fields:
           - {label: "Logo UNY", name: "unyLogo", widget: "image"}
