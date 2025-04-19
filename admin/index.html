@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin KKM BEM UNY</title>
+  <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <style>
     /* Optimasi Tampilan Mobile */
@@ -12,36 +13,42 @@
       padding: 15px;
       line-height: 1.5;
     }
-    .nc-controlPane-wrapper {
-      padding: 15px;
-      background: #f8f9fa;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-    .nc-github-button {
-      padding: 10px 15px;
-      font-size: 16px;
-    }
-    .nc-entryListing-list {
-      grid-gap: 10px;
-    }
+    /* Tambahan style untuk peningkatan UI Mobile */
     @media (max-width: 768px) {
       .nc-controlPane-root {
         width: 100% !important;
+      }
+      
+      /* Memperbaiki ukuran widget pada perangkat mobile */
+      .nc-controlPane-control {
+        padding: 16px !important;
+      }
+      
+      /* Memperbesar tombol untuk kemudahan tap */
+      button {
+        min-height: 48px;
+      }
+      
+      /* Meningkatkan keterbacaan pada layar kecil */
+      input, textarea, select {
+        font-size: 16px !important; /* Mencegah zoom otomatis di iOS */
       }
     }
   </style>
 </head>
 <body>
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <!-- Netlify CMS Script -->
+  <script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
   <script>
-    // Auto-refresh untuk update instan
-    if (window.location.hostname === 'kkmbemuny.netlify.app') {
-      const socket = new WebSocket('wss://ws.netlify.com/live-updates');
-      socket.onmessage = () => {
-        console.log('Update diterima, me-refresh halaman...');
-        window.location.reload();
-      };
+    // Kode untuk menyesuaikan CMS jika diperlukan
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
     }
   </script>
 </body>
