@@ -4,50 +4,43 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin KKM BEM UNY</title>
+  <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    /* Optimasi Tampilan Mobile */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 15px;
+      line-height: 1.5;
+    }
+    /* Tambahan style untuk peningkatan UI Mobile */
+    @media (max-width: 768px) {
+      .nc-controlPane-root {
+        width: 100% !important;
+      }
+      
+      /* Memperbaiki ukuran widget pada perangkat mobile */
+      .nc-controlPane-control {
+        padding: 16px !important;
+      }
+      
+      /* Memperbesar tombol untuk kemudahan tap */
+      button {
+        min-height: 48px;
+      }
+      
+      /* Meningkatkan keterbacaan pada layar kecil */
+      input, textarea, select {
+        font-size: 16px !important; /* Mencegah zoom otomatis di iOS */
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Gunakan versi spesifik Netlify CMS yang sudah terbukti bekerja dengan editorial workflow -->
-  <script src="https://unpkg.com/netlify-cms@2.10.68/dist/netlify-cms.js"></script>
-  
+  <!-- Netlify CMS Script -->
+  <script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
   <script>
-    // Inisialisasi kustom untuk memperbaiki masalah workflow
-    window.CMS_MANUAL_INIT = true;
-    
-    // Memuat konfigurasi backend secara terpisah
-    fetch('/admin/backend.yml')
-      .then(response => response.text())
-      .then(backendConfig => {
-        // Memuat konfigurasi utama
-        fetch('/admin/config.yml')
-          .then(response => response.text())
-          .then(mainConfig => {
-            // Gabungkan backend dengan konfigurasi utama
-            const mergedConfig = backendConfig + '\n' + mainConfig.replace(/^backend:[\s\S]*?(?=\n[a-zA-Z])/m, '');
-            
-            // Inisialisasi CMS dengan konfigurasi gabungan
-            window.CMS.init({
-              config: {
-                load_config_file: false,
-                local_backend: false,
-                publish_mode: 'editorial_workflow',
-                media_folder: 'images/uploads',
-                public_folder: '/images/uploads',
-              }
-            });
-            
-            // Parse dan terapkan konfigurasi
-            const yaml = window.jsyaml || window.yaml;
-            if (yaml) {
-              const config = yaml.load(mergedConfig);
-              window.CMS.registerPreviewTemplate('my-template', () => {});
-              Object.keys(config).forEach(key => {
-                window.CMS.config[key] = config[key];
-              });
-            }
-          });
-      });
-    
+    // Kode untuk menyesuaikan CMS jika diperlukan
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
@@ -58,8 +51,5 @@
       });
     }
   </script>
-  
-  <!-- Tambahkan js-yaml untuk proses konfigurasi -->
-  <script src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
 </body>
 </html>
