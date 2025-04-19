@@ -2,9 +2,13 @@ backend:
   name: git-gateway
   branch: main
   commit_messages:
-    create: "Buat {{collection}} '{{slug}}'"
+    create: "Create {{collection}} '{{slug}}'"
     update: "Update {{collection}} '{{slug}}'"
-    delete: "Hapus {{collection}} '{{slug}}'"
+    delete: "Delete {{collection}} '{{slug}}'"
+
+# Auto-refresh website setelah update
+display_url: "https://kkmbemuny.netlify.app"
+preview_output: "_site"
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
