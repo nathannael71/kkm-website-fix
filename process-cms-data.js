@@ -34,3 +34,24 @@ combineJsonFiles('_data/timeline', '_data/timeline.json');
 combineJsonFiles('_data/gallery', '_data/gallery.json');
 
 console.log('Semua data berhasil diproses!');
+
+// Tambahkan ini setelah bagian membuat folder dasar
+const workflowDirs = [
+  '.git',
+  '.git/workflows',
+  '.git/hooks'
+];
+
+workflowDirs.forEach(dir => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+    console.log(`Direktori ${dir} berhasil dibuat`);
+  }
+});
+
+// Buat file workfow kosong jika belum ada
+const workflowIndexPath = '.git/workflows/index.json';
+if (!fs.existsSync(workflowIndexPath)) {
+  fs.writeFileSync(workflowIndexPath, JSON.stringify({}, null, 2));
+  console.log('File workflow index berhasil dibuat');
+}
