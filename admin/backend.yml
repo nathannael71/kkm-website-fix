@@ -1,0 +1,13 @@
+backend:
+  name: git-gateway
+  branch: main # Pastikan ini sesuai dengan branch yang Anda gunakan
+  repo: nathannael71/kkm-website-fix # Ganti dengan username/reponame GitHub Anda
+  identity_url: "https://kkmbemuny.netlify.app/.netlify/identity"
+  gateway_url: "https://kkmbemuny.netlify.app/.netlify/git/github"
+  squash_merges: true
+  commit_messages:
+    create: "Create {{collection}} "{{slug}}""
+    update: "Update {{collection}} "{{slug}}""
+    delete: "Delete {{collection}} "{{slug}}""
+    uploadMedia: "Upload "{{path}}""
+    deleteMedia: "Delete "{{path}}""
